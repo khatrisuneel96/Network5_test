@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: arial;
+}
+
+.nav {
+  position: absolute;
+  background-color: white;
+  color: rgb(123, 123, 123);
+  display: flex;
+  width: 16rem;
+  height: 100%;
+  border-right-style: dashed;
+  border-right-color: rgb(240, 240, 240);
+  padding-top: 10rem;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 1rem;
+  font-size: 0.8rem;
+  font-family: arial;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  padding-left: 3.5rem;
+}
+
+.nav li {
+  width: 16rem;
+}
+
+.nav li:hover {
+  background-color: rgb(222, 222, 222);
+}
+
+.nav li.active {
+  background-color: rgb(240, 240, 240);
+}
+
+.container {
+  margin-left: 16rem;
+  padding-left: 3rem;
+  padding-top: 10rem;
+}
+
+.message_header {
+  font-size: 2.25rem;
+}
+
+.email_header {
+  font-size: 2.25rem;
+}
+
+.fa {
+  color: red;
+}
+
+.Loginbar {
+  position: absolute;
+  width: 100%;
+  height: 10rem;
+  margin-left: 16rem;
+  display: flex;
+}
+
+.Loginbar button {
+  font-size: 1.5rem;
+  background-color: #19bb65;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  font-weight: bold;
+  margin-left: 3rem;
+  margin-top: 1.5em;
+}
+
+.Loginbar button:hover {
+  background-color: #0f5831;
+}
+
+.Loginbar button:active {
+  background-color: #19bb65;
+}
