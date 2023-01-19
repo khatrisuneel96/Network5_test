@@ -1,4 +1,5 @@
 import React from 'react';
+import DiscordLogin from './DiscordLogin';
 import FacebookLogin from './FacebookLogin';
 import GoogleLogin from './GoogleLogin';
 
@@ -7,6 +8,7 @@ function Loginbar(props) {
         <div className='Loginbar'>
             <FacebookLogin></FacebookLogin>
             <GoogleLogin></GoogleLogin>
+            <DiscordLogin></DiscordLogin>
         </div>
     );
 }

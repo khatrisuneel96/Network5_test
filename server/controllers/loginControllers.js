@@ -64,3 +64,25 @@ export const getFbGroups = async (req, res) => {
         res.status(500).json({ error })
     }
 }
+
+export const getDiscLogin = async (req, res) => { 
+    //discord login function
+    try {
+        const params = new URLSearchParams({
+            ['redirect_uri']: 'https://localhost:3000',
+            ['client_id']: '1012896743429513367',
+            ['client_secret']: 'bfB6pwvECCtyqFUXb7eOf3iy5-udTVMo',
+            ['grant_type']: 'authorization_code',
+            ...url.parse(req.url, true).query
+        })
+        const apiRes = await needle('post', 'https://discord.com/api/v10/oauth2/token', `${params}`)     //request made
+        const data = apiRes.body
+        data.media = 'discord'
+        const newToken = new ApiToken(data)            //setting the value for mongodb
+        await newToken.save()                          //saving the value to mongodb     
+        res.status(200).json(data)
+    }
+    catch (error) {
+        res.status(500).json({ error })
+    }
+}
