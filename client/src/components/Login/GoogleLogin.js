@@ -17,7 +17,6 @@ function GoogleLogin(props) {
                 axios.get('http://localhost:5000/login/g?code='+searchParams.get("code"))
                 .then(response => {
                     console.log(response.data)
-                    console.log(searchParams.get("code"))
                 })
             }
 

@@ -82,6 +82,17 @@ body {
   margin-top: 1.5em;
 }
 
+.Loginbar select {
+  font-size: 1.5rem;
+  background-color: #19bb65;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  font-weight: bold;
+  margin-left: 3rem;
+  margin-top: 1.5em;
+}
+
 .Loginbar button:hover {
   background-color: #0f5831;
 }

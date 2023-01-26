@@ -4,4 +4,4 @@ const postUrl = 'http://localhost:5000/posts' //the specific route that the clie
 
 //creating the fetchPosts and createPost functions that are used in actions
 export const fetchPosts = () => axios.get(postUrl)
-export const createPost = (newPost) => axios.post(postUrl, newPost)
+export const createPost = (newPost) => axios.post(postUrl, newPost) 
