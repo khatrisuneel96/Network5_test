@@ -5,6 +5,8 @@ import cors from 'cors'
 
 import postRoutes from './routes/posts.js'
 import loginRoutes from './routes/loginRoutes.js'
+import messageRoutes from './routes/messageRoutes.js'
+import fbPageRoutes from './routes/fbPageRoutes.js'
 
 const app = express()
 
@@ -14,6 +16,8 @@ app.use(cors());
 
 app.use('/posts', postRoutes)
 app.use('/login', loginRoutes)
+app.use('/messages', messageRoutes)
+app.use('/pages', fbPageRoutes)
 
 const CONNECTION_URL = 'mongodb+srv://vassardog:PqjUhp2bYgb3d8Vj@cluster0.kl3sctu.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;

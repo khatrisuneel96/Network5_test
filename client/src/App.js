@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom"
 
 import NavBar from './components/Navbar';
-import Messages from './components/Messages';
+import Messages from './components//Messages/Main';
 import Feed from './components/Feed/Feed';
 import Dashboard from './components/Dashboard';
 import Email from './components/Email';

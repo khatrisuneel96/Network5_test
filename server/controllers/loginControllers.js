@@ -2,6 +2,7 @@ import url from 'url'
 import needle from 'needle'
 import ApiToken from "../models/apiToken.js"
 import Secret from '../models/secrets.js'
+import FbPage from "../models/fbPage.js"
 
 export const getFbLogin = async (req, res) => { //facebook login fucntion
     try {
@@ -12,7 +13,7 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
             ['client_secret']: fbvalues.secret,
             ...url.parse(req.url, true).query
         })
-        await ApiToken.deleteMany({media: "facebook"})
+        await ApiToken.deleteMany({media: "facebook"})                                        //delete old values
         const apiRes = await needle('get', `https://graph.facebook.com/v15.0/oauth/access_token?${params}`)     //request made
         const data = apiRes.body
         data.media = 'facebook'
@@ -35,7 +36,7 @@ export const getGLogin = async (req, res) => {  //google login fucntion
             ['grant_type']: 'authorization_code',
             ...url.parse(req.url, true).query
         })
-        await ApiToken.deleteMany({media: "google"})
+        await ApiToken.deleteMany({media: "google"})                                        //delete old values
         const apiRes = await needle('post', `https://oauth2.googleapis.com/token?${params}`)     //request made
         const data = apiRes.body 
         data.media = 'google'
@@ -48,30 +49,17 @@ export const getGLogin = async (req, res) => {  //google login fucntion
     }
 }
 
-export const getFbPages = async (req, res) => { //getting fb page id
-    try {
-        const FbToken = await ApiToken.findOne({media: "facebook"})
-        const apiRes = await needle('get', `https://graph.facebook.com/v14.0/me/accounts?`,
-        { headers: { "Authorization": 'Bearer ' + FbToken.access_token } })
-        const data = apiRes.body       
-        res.status(200).json(data)
-    }
-    catch (error) {
-        res.status(500).json({ error })
-    }
-}
-
 export const getIgLogin = async (req, res) => { //instagram login function
     try {
         const PageId = req.body.id                  //get Fb page Id that was past from client
         const FbToken = await ApiToken.findOne({media: "facebook"})
-        await ApiToken.deleteMany({media: "instagram"})
+        await ApiToken.deleteMany({media: "instagram"})                                        //delete old values
         const apiRes = await needle('get', 'https://graph.facebook.com/v14.0/'+PageId+'?fields=instagram_business_account',
         { headers: { "Authorization": 'Bearer ' + FbToken.access_token } })                 //request made
         const newToken = new ApiToken()            //setting the value for mongodb
         newToken.media = 'instagram'
-        newToken.access_token = apiRes.body.instagram_business_account.id
-        console.log(newToken)
+        const IgToken = await FbPage.findOne({id: PageId})  //Getting the fbpage element that has the ig account attached
+        newToken.access_token = IgToken.access_token //saving page access token
         await newToken.save()                          //saving the value to mongodb     
         res.status(200).json(newToken)
     }
@@ -90,7 +78,7 @@ export const getDiscLogin = async (req, res) => {  //discord login function
             ['grant_type']: 'authorization_code',
             ...url.parse(req.url, true).query
         })
-        await ApiToken.deleteMany({media: "discord"})
+        await ApiToken.deleteMany({media: "discord"})                                        //delete old values
         const apiRes = await needle('post', 'https://discord.com/api/v10/oauth2/token', `${params}`)     //request made
         const data = apiRes.body
         data.media = 'discord'

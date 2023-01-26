@@ -1,32 +1,38 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios'
 function InstagramLogin(props) {
 
     const [Pages, setPages] = useState({})
+    const [Login,setLogin] = useState(false)
 
-    let login = () => {
-        axios.get('http://localhost:5000/login/pages?')
+    let login = () => {                                         //(1st function run) getting facebook pages and related info
+        axios.get('http://localhost:5000/pages?')
         .then(response => {
-            setPages(response.data.data)
+            setPages(response.data)
+            setLogin(true)
+            console.log(response.data)
         })
     }
 
-    const handleSubmit = (e) => {
-        axios.post('http://localhost:5000/login/ig', {"id": e.target.value})
+    const handleSubmit = (e) => {                               //(3rd and final function run) once page is selected, send information to the server
+        axios.post('http://localhost:5000/login/ig',
+        {"id": Pages[e.target.value].id, "access_token": Pages[e.target.value].access_token}) //setting request body
         .then(response => {
             //console.log(response.data)
+            setContent(<button onClick={login}>Logged In</button>)
+            setPages({})
         })
     }
 
     const [Content, setContent] = useState(<button onClick={login}>Insta Login</button>)
 
-        if(Pages.length){
+        if(Login===true){                                                                   //(2nd function run) creating facebook page selector so that the user can select which facebook page is associated with their ig account
             var selector = [<option key='1' value=''>Choose a page</option>]
             for (var i = 0; i < Pages.length; i++) {
-                    selector.push(<option key={[i+2]} value={Pages[i].id}>{Pages[i].name}</option>)
+                    selector.push(<option key={[i+2]} value={i}>{Pages[i].name}</option>)
             }
             setContent(<select onChange={handleSubmit}>{selector}</select>) //change login button to page selector
-        setPages({})
+        setLogin(false)
         }
 
 
