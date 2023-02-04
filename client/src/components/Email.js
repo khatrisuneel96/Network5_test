@@ -1,6 +1,16 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 
 function Email(props) {
+
+    let sendEmail = async () => {
+        await axios.post('http://localhost:5000/calendar')
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => console.log(err))
+}
+    
 
     const emails = [
         { name: 'name1', date: '1/1/23', subject: 'subject1', message:'message1'},
@@ -12,7 +22,7 @@ function Email(props) {
 
     return (
         <div>
-            <textarea placeholder='Search Emails'></textarea>
+            <button onClick={sendEmail}>Get Calendar</button>
             <div className='email_header'>{emails[0].subject}</div>
         </div>
     );

@@ -7,6 +7,8 @@ import postRoutes from './routes/posts.js'
 import loginRoutes from './routes/loginRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
 import fbPageRoutes from './routes/fbPageRoutes.js'
+import emailRoutes from './routes/emailRoutes.js'
+import calendarRoutes from './routes/calendarRoutes.js'
 
 const app = express()
 
@@ -18,6 +20,8 @@ app.use('/posts', postRoutes)
 app.use('/login', loginRoutes)
 app.use('/messages', messageRoutes)
 app.use('/pages', fbPageRoutes)
+app.use('/email', emailRoutes)
+app.use('/calendar', calendarRoutes)
 
 const CONNECTION_URL = 'mongodb+srv://vassardog:PqjUhp2bYgb3d8Vj@cluster0.kl3sctu.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;

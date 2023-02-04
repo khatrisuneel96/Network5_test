@@ -4,7 +4,7 @@ function Main(props) {
 
     const [Content, setContent] = useState('')
 
-    let getFbMessages = () => {                               //Getting Facebook Page Messages
+    let getFbMessages = async () => {                               //Getting Facebook Page Messages
         axios.get('http://localhost:5000/messages/fb')
         .then(response => {
             console.log(response.data.data)
@@ -13,7 +13,7 @@ function Main(props) {
         })
     }
 
-    let getIgMessages = () => {                               //Getting Instagram Messages
+    let getIgMessages = async () => {                               //Getting Instagram Messages
         axios.get('http://localhost:5000/messages/ig')
         .then(response => {
             console.log(response.data.data)
