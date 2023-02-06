@@ -1,15 +1,15 @@
 import React from 'react'
 import axios from 'axios'
+import { useDispatch } from 'react-redux';
+import { postEmail } from './../actions/emailActions'
 
 function Email(props) {
 
-    let sendEmail = async () => {
-        await axios.post('http://localhost:5000/calendar')
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((err) => console.log(err))
-}
+    const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
+    let sendEmail = async () => {       //sending email to the server (function comming from actions folder)
+        dispatch(postEmail())
+    }
+
     
 
     const emails = [
@@ -22,7 +22,7 @@ function Email(props) {
 
     return (
         <div>
-            <button onClick={sendEmail}>Get Calendar</button>
+            <button onClick={sendEmail}>Send Email</button>
             <div className='email_header'>{emails[0].subject}</div>
         </div>
     );

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import FileBase from 'react-file-base64'
 import { useDispatch } from 'react-redux';
-
-
 import { createPost } from '../../actions/posts'
 function Form(props) {
 

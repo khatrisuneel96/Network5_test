@@ -1,8 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux';
+import { postCalendarEvent } from './../actions/calendarActions'
 
 function Dashboard(props) {
+
+  const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
+  let postEvent = async () => {       //sending email to the server (function comming from actions folder)
+      dispatch(postCalendarEvent())
+  }
 
     const currentDate = new Date();
 
@@ -20,10 +27,15 @@ function Dashboard(props) {
 
     return (
         <div>
-            <button onClick={getDaysInMonth}>Get Days In Month</button>
-            <button onClick={getMonth}>Get Month</button>
-            <button onClick={getDay}>Get Day</button>
             <FontAwesomeIcon className='fa' icon={faUser} />
+            <div>
+              <button onClick={getDaysInMonth}>Get Days In Month</button>
+              <button onClick={getMonth}>Get Month</button>
+              <button onClick={getDay}>Get Day</button>
+            </div>
+            <div>
+              <button onClick={postEvent}>Post Calendar Event</button>
+            </div>
         </div>
     );
 }

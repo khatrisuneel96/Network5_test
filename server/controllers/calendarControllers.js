@@ -27,14 +27,12 @@ export const postEvents = async (req, res) => {
         data : data
       };
 
-      console.log(GToken.access_token)
       await axios(config)
               .then(function(response) {
                 console.log(response.body)
                 res.status(200).json(data)
               })
               .catch(function(error) {
-              //console.log(error.response)
               res.status(500).json({ error })
               })
 }
