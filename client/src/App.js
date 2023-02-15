@@ -3,18 +3,16 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom"
 
 import NavBar from './components/Navbar';
-import Messages from './components//Messages/Main';
+import Messages from './components/Messages/messageFunctionality';
 import Feed from './components/Feed/Feed';
-import Dashboard from './components/Dashboard';
-import Email from './components/Email';
-import Rsvp from './components/Rsvp';
-import Analytics from './components/Analytics';
-import Profile from './components/Profile';
+import Dashboard from './components/Dashboard/dashboardFunctionality';
+import Email from './components/Email/emailFunctionality';
+import Rsvp from './components/Rsvp/rsvpFunctionality';
+import Analytics from './components/Analytics/analyticsFunctionality';
+import Profile from './components/Profile/profileFunctionality';
 import Loginbar from './components/Login/Loginbar';
 
 function App() {
-
-
   return (
     <div>
       <Loginbar></Loginbar>

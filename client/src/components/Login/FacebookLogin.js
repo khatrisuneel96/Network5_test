@@ -7,7 +7,14 @@ function FacebookLogin(props) {
     let access_code_pending = sessionStorage.getItem('fb_code_pending')
 
     let login = () => {  //using login redirect to get code
-        let scopes =  ['&scope=pages_show_list%2Cinstagram_basic%2Cpages_read_engagement']
+        let scopes =  [         //setting scopes (make sure that %2C is added between scopes)
+            '&scope='+
+            'pages_show_list%2C'+
+            'instagram_basic%2C'+
+            'pages_read_engagement%2C'+
+            'instagram_manage_insights%2C'+
+            'pages_manage_posts'
+        ]
         window.location.replace("https://www.facebook.com/v15.0/dialog/oauth?client_id=354529376664526&redirect_uri=https://localhost:3000&state=1h12j5215ggdn8ng7fj3"+scopes)
         sessionStorage.setItem('fb_code_pending', 'pending')
     }

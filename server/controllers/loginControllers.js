@@ -3,7 +3,7 @@ import needle from 'needle'
 import axios from 'axios'
 import ApiToken from "../models/apiToken.js"
 import Secret from '../models/secrets.js'
-import FbPage from "../models/fbPage.js"
+import Page from "../models/page.js"
 
 export const getFbLogin = async (req, res) => { //facebook login fucntion
     try {
@@ -57,11 +57,19 @@ export const getIgLogin = async (req, res) => { //instagram login function
         await ApiToken.deleteMany({media: "instagram"})                                        //delete old values
         const apiRes = await needle('get', 'https://graph.facebook.com/v14.0/'+PageId+'?fields=instagram_business_account',
         { headers: { "Authorization": 'Bearer ' + FbToken.access_token } })                 //request made
+        console.log(apiRes.body)
         const newToken = new ApiToken()            //setting the value for mongodb
         newToken.media = 'instagram'
-        const IgToken = await FbPage.findOne({id: PageId})  //Getting the fbpage element that has the ig account attached
-        newToken.access_token = IgToken.access_token //saving page access token
-        await newToken.save()                          //saving the value to mongodb     
+        const FbPageMatch = await Page.findOne({id: PageId})  //Getting the fbpage element that has the ig account attached
+        newToken.access_token = FbPageMatch.access_token  //saving fb page access token as ig access token in database
+        await newToken.save()                          //saving the value to mongodb    
+        await Page.deleteMany({media: "instagram"}) //creating new page element in database for ig page
+        const newPage = new Page()
+        newPage.media = 'instagram'
+        newPage.name = FbPageMatch.name             //setting the ig page to have the same name as its matching facebook page
+        newPage.access_token = FbPageMatch.access_token //setting the ig page to have the same access token as its matching facebook page
+        newPage.id = apiRes.body.instagram_business_account.id //setting the ig page to have the ig page id
+        await newPage.save()
         res.status(200).json(newToken)
     }
     catch (error) {

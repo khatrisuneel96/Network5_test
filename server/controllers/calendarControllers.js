@@ -6,17 +6,7 @@ export const postEvents = async (req, res) => {
 
     const GToken = await ApiToken.findOne({media: "google"})
 
-    var data = JSON.stringify({
-        "summary": "Google I/O 2015",
-        "location": "800 Howard St., San Francisco, CA 94103",
-        "description": "A chance to hear more about Google developer products",
-        "start": {
-          "dateTime": "2023-02-02T09:00:00-07:00"
-        },
-        "end": {
-          "dateTime": "2023-02-02T17:00:00-07:00"
-        }
-      })
+    var data = JSON.stringify(req.body) //the event from the client
       var config = {
         method: 'post',
         url: 'https://www.googleapis.com/calendar/v3/calendars/benmoxon256@gmail.com/events',
@@ -29,7 +19,7 @@ export const postEvents = async (req, res) => {
 
       await axios(config)
               .then(function(response) {
-                console.log(response.body)
+                //console.log(response.body)
                 res.status(200).json(data)
               })
               .catch(function(error) {
