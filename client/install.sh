@@ -1,1 +1,1 @@
-npm install axios moment react-file-base64 redux redux-thunk
+npm install axios moment react-file-base64 redux redux-thunk buffer react-scripts
