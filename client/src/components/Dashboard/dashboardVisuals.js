@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
 function dashboardVisuals(props) {
     const currentDate = new Date();
@@ -19,7 +19,7 @@ function dashboardVisuals(props) {
 
     return (
         <div>
-            <FontAwesomeIcon className='fa' icon={faUser} />
+            <FontAwesomeIcon className='fa' icon={faEnvelope} />
             <div>
               <button onClick={getDaysInMonth}>Get Days In Month</button>
               <button onClick={getMonth}>Get Month</button>

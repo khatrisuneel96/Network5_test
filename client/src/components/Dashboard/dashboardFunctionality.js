@@ -1,8 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { postCalendarEvent } from '../../actions/calendarActions'
+import { useSelector } from 'react-redux'
 
 function DashboardFunctionality(props) {
+
+  const events = useSelector((state) => state.events)
+
 
   const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 
@@ -22,6 +26,7 @@ function DashboardFunctionality(props) {
       }
     }
     dispatch(postCalendarEvent(cal_event))
+    alert("Event Scehduled!")
   }
 
 
@@ -37,6 +42,7 @@ function DashboardFunctionality(props) {
             </div>
             <div><button type='submit'>Schedule Event</button></div>
           </form>
+          <button onClick={()=>console.log(events)}>test</button>
         </div>
     );
 }

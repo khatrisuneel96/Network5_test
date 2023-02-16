@@ -17,6 +17,7 @@ function EmailFunctionality(props) {
             ).toString('base64')
         let email = {"raw":data}
         dispatch(postEmail(email))
+        alert("Email Sent!")
     }
 
     return (
