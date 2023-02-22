@@ -104,3 +104,7 @@ body {
 .email_header textarea {
   background-color:orange;
 }
+
+.chart {
+  width: 15rem;
+}
