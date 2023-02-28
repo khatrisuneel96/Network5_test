@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { getAnalytics } from '../controllers/analyticsControllers.js'
+import { getFbAnalytics,getIgAnalytics } from '../controllers/analyticsControllers.js'
 
 const router = express.Router()
 
-router.get('/', getAnalytics)
+router.get('/ig', getIgAnalytics)
+router.get('/fb', getFbAnalytics)
 
 export default router

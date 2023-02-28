@@ -3,6 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 function FacebookLogin(props) {
 
+    let params = () => {
+        console.log(window.location.origin)
+    }
+
     const [searchParams] = useSearchParams()
     let access_code_pending = sessionStorage.getItem('fb_code_pending')
 
@@ -32,6 +36,7 @@ function FacebookLogin(props) {
     return (
         <div>
             <button onClick={login}>Facebook Login</button>
+            <button onClick={params}>params</button>
         </div>
     );
 }
