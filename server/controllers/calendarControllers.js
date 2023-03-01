@@ -1,6 +1,5 @@
 import axios from 'axios'
 import ApiToken from "../models/apiToken.js"
-import { response } from 'express'
 
 export const postEvents = async (req, res) => {
 

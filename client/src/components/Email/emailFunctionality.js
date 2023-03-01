@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { postEmail } from '../../actions/emailActions'
+import { getFbLogin } from '../../actions/loginActions'
 import { Buffer } from 'buffer'
 
 function EmailFunctionality(props) {

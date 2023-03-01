@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getGLogin } from '../../actions/loginActions'
+
 function GoogleLogin(props) {
+
+    const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 
     const [searchParams] = useSearchParams()
     let access_code_pending = sessionStorage.getItem('g_code_pending')
@@ -14,10 +18,11 @@ function GoogleLogin(props) {
 
         if(access_code_pending === ('pending')){
                 sessionStorage.removeItem("g_code_pending");
-                axios.get('http://localhost:5000/login/g?code='+searchParams.get("code"))
-                .then(response => {
-                    console.log(response.data)
-                })
+                let code = searchParams.get("code")
+                let redirect_uri = window.location.origin
+                
+                let config = {"code":code,"redirect_uri":redirect_uri}
+                dispatch(getGLogin(config))
             }
 
 

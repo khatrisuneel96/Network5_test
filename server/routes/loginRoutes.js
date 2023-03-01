@@ -4,9 +4,9 @@ import { getFbLogin,getGLogin,getDiscLogin,getIgLogin } from '../controllers/log
 
 const router = express.Router()
 
-router.get('/fb', getFbLogin)
-router.get('/g', getGLogin)
-router.get('/dc', getDiscLogin)
+router.post('/fb', getFbLogin)
+router.post('/g', getGLogin)
+router.post('/dc', getDiscLogin)
 router.post('/ig', getIgLogin)
 
 export default router

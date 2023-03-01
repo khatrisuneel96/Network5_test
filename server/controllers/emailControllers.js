@@ -6,6 +6,7 @@ export const postEmails = async (req, res) => { //sending email through gmail
     const GToken = await ApiToken.findOne({media: "google"})
 
     var data = JSON.stringify(req.body) //the email from the client
+    console.log(data)
       var config = {
         method: 'post',
         url: 'https://gmail.googleapis.com/gmail/v1/users/me/messages/send',
