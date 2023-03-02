@@ -10,7 +10,8 @@ function DiscordLogin(props) {
     const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 
     let login = () => {  //using login redirect to get code
-        window.location.replace("https://discord.com/api/oauth2/authorize?response_type=code&client_id=1012896743429513367&scope=messages.read%20guilds.members.read%20guilds&state=15563059ghq9183habn&redirect_uri=https%3A%2F%2Flocalhost%3A3000&prompt=consent")
+        var url = encodeURIComponent(window.location.origin)
+        window.location.replace("https://discord.com/api/oauth2/authorize?response_type=code&client_id=1012896743429513367&scope=messages.read%20guilds.members.read%20guilds&state=15563059ghq9183habn&redirect_uri="+url+"&prompt=consent")
         sessionStorage.setItem('disc_code_pending', 'pending')
     }
 

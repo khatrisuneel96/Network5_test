@@ -19,7 +19,7 @@ function FacebookLogin(props) {
             'instagram_manage_insights%2C'+
             'pages_manage_posts'
         ]
-        window.location.replace("https://www.facebook.com/v15.0/dialog/oauth?client_id=354529376664526&redirect_uri=https://localhost:3000&state=1h12j5215ggdn8ng7fj3"+scopes)
+        window.location.replace("https://www.facebook.com/v15.0/dialog/oauth?client_id=354529376664526&redirect_uri="+window.location.origin+"&state=1h12j5215ggdn8ng7fj3"+scopes)
         sessionStorage.setItem('fb_code_pending', 'pending')
     }
 
