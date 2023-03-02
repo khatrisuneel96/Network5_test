@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getGLogin } from '../../actions/loginActions'
 
-function GoogleLogin(props) {
+function GoogleLogin(props) { 
 
     const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 

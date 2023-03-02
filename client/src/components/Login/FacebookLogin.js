@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getFbLogin } from '../../actions/loginActions'
-function FacebookLogin(props) {
+function FacebookLogin(props) { 
 
     const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 

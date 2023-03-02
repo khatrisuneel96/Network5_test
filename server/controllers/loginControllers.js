@@ -34,7 +34,7 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
         res.status(500).json({ error })
       })    
 
-}
+} 
 
 
 

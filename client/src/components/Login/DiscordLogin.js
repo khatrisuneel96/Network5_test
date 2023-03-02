@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getDcLogin } from '../../actions/loginActions'
-import axios from 'axios';
+import axios from 'axios'; 
 
 function DiscordLogin(props) {
     const [searchParams] = useSearchParams()
