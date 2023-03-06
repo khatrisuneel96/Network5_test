@@ -7,7 +7,7 @@ import Messages from './components/Messages/messageFunctionality';
 import Feed from './components/Feed/Feed';
 import Dashboard from './components/Dashboard/dashboardFunctionality';
 import Email from './components/Email/emailFunctionality';
-import Rsvp from './components/Rsvp/rsvpFunctionality';
+import Rsvp from './components/Rsvp/rsvpVisuals';
 import Analytics from './components/Analytics/analyticsFunctionality';
 import Profile from './components/Profile/profileFunctionality';
 import Loginbar from './components/Login/Loginbar';

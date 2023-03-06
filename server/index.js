@@ -12,6 +12,7 @@ import calendarRoutes from './routes/calendarRoutes.js'
 import webhookRoutes from './routes/webhookRoutes.js'
 import analyticsRoutes from './routes/analyticsRoutes.js'
 import postRoutes from './routes/postRoutes.js'
+import userRoutes from './routes/user.js'
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use('/calendar', calendarRoutes)
 app.post('/webhook', webhookRoutes)
 app.use('/analytics', analyticsRoutes)
 app.use('/post', postRoutes)
+app.use('/api/user', userRoutes)
 
 const CONNECTION_URL = 'mongodb+srv://vassardog:PqjUhp2bYgb3d8Vj@cluster0.kl3sctu.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;

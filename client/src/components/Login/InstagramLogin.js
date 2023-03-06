@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-function InstagramLogin(props) {
+function InstagramLogin(props) { 
 
     const [Pages, setPages] = useState({})
     const [Login,setLogin] = useState(false)

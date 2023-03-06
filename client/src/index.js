@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import{ BrowserRouter } from "react-router-dom"
+import { AuthContextProvider } from './components/context/AuthContext.js'
 
 import reducers from './reducers'
 
@@ -15,9 +16,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthContextProvider>
     </Provider>
   </React.StrictMode>
 );
