@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { postCalendarEvent } from '../../actions/calendarActions'
 import { useSelector } from 'react-redux'
+import axios from 'axios';
 
 function DashboardFunctionality(props) {
 
@@ -28,7 +29,12 @@ function DashboardFunctionality(props) {
     dispatch(postCalendarEvent(cal_event))
     alert("Event Scehduled!")
   }
-
+  
+  let getEvents = async (e) => {
+    axios.get('http://localhost:5000/calendar/get')
+    .then(response => {
+        console.log(response.data)})
+  }
 
     return (
         <div>
@@ -43,6 +49,7 @@ function DashboardFunctionality(props) {
             <div><button type='submit'>Schedule Event</button></div>
           </form>
           <button onClick={()=>console.log(events)}>test</button>
+          <button onClick={getEvents}>Get calendar Events</button>
         </div>
     );
 }

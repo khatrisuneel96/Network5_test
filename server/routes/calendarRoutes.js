@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { postEvents } from '../controllers/calendarControllers.js'
+import { postEvents, getEvents } from '../controllers/calendarControllers.js'
 
 const router = express.Router()
 
-router.post('/', postEvents)
+router.post('/post', postEvents)
+router.get('/get', getEvents)
 
 export default router

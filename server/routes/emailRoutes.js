@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { postEmails } from '../controllers/emailControllers.js'
+import { postEmails, getEmails } from '../controllers/emailControllers.js'
 
 const router = express.Router()
 
-router.post('/', postEmails)
+router.post('/send', postEmails)
+router.get('/list', getEmails)
 
 export default router

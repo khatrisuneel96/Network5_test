@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { postEmail } from '../../actions/emailActions'
-import { getFbLogin } from '../../actions/loginActions'
+import axios from 'axios';
 import { Buffer } from 'buffer'
 
 function EmailFunctionality(props) {
@@ -21,6 +21,12 @@ function EmailFunctionality(props) {
         alert("Email Sent!")
     }
 
+    let getEmails = async (e) => {
+        axios.get('http://localhost:5000/email/list')
+        .then(response => {
+            console.log(response.data)})
+    }
+
     return (
         <div>
             <form onSubmit={sendEmail}>
@@ -29,6 +35,7 @@ function EmailFunctionality(props) {
             <div><textarea placeholder='body'></textarea></div>
             <div><button type='submit'>Send Email</button></div>
           </form>
+          <div><button onClick={getEmails}>Get Emails</button></div>
         </div>
     );
 }

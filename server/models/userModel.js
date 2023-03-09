@@ -5,6 +5,12 @@ import validator from 'validator'
 const Schema = mongoose.Schema  //maybe fix export??
 
 const userSchema = new Schema({
+  screen_name: {
+    type: String,
+    required: false,
+    unique: false
+  },
+  profile_pic: String,
   email: {
     type: String,
     required: true,
@@ -17,10 +23,12 @@ const userSchema = new Schema({
 })
 
 // static signup method
-userSchema.statics.signup = async function(email, password) {
+userSchema.statics.signup = async function(screen_name,profile_pic,email, password) {
+
+  console.log(email)
 
   // validation
-  if (!email || !password) {
+  if (!screen_name || !email || !password) {
     throw Error('All fields must be filled')
   }
   if (!validator.isEmail(email)) {
@@ -39,13 +47,15 @@ userSchema.statics.signup = async function(email, password) {
   const salt = await bcrypt.genSalt(10)
   const hash = await bcrypt.hash(password, salt)
 
-  const user = await this.create({ email, password: hash })
+  const user = await this.create({ screen_name,profile_pic,email, password: hash })
 
   return user
 }
 
 // static login method
 userSchema.statics.login = async function(email, password) {
+
+  console.log(email)
 
   if (!email || !password) {
     throw Error('All fields must be filled')
