@@ -17,6 +17,7 @@ import webhookRoutes from './routes/webhookRoutes.js'
 import analyticsRoutes from './routes/analyticsRoutes.js'
 import postRoutes from './routes/postRoutes.js'
 import userRoutes from './routes/user.js'
+import profileRoutes from './routes/profileRoutes.js'
 
 const app = express()
 
@@ -34,6 +35,7 @@ app.post('/webhook', webhookRoutes)
 app.use('/analytics', analyticsRoutes)
 app.use('/post', postRoutes)
 app.use('/api/user', userRoutes)
+app.use('/profiles', profileRoutes)
 
 const server = http.createServer(app)    //setting server
 

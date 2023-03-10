@@ -7,6 +7,7 @@ const DcLoginUrl = 'http://localhost:5000/login/dc'
 const emailUrl = 'http://localhost:5000/email/send'
 const calendarUrl = 'http://localhost:5000/calendar'
 const analyticsUrl = 'http://localhost:5000/analytics'
+const profileUrl = 'http://localhost:5000/profiles'
 
 
 
@@ -42,5 +43,10 @@ export const postCalendarEvent = (config) => axios.post(calendarUrl, config)
 export const getAnalytics = (config) => axios.get(analyticsUrl, config)
 .then((response) => {
     console.log(response)
+    return response
+})
+
+export const postProfile = (config) => axios.post(profileUrl, config)
+.then((response) => {
     return response
 })

@@ -7,7 +7,7 @@ import Page from "../models/page.js"
 
 export const getFbLogin = async (req, res) => { //facebook login fucntion
     const fbvalues = await Secret.findOne({media: "facebook"})         //get parameter values from database
-    var redirect_uri = req.body.redirect_uri 
+    var redirect_uri = req.body.redirect_uri
     var code = req.body.code 
     var config = {                                                                          //setting values for request
         method: 'get',
@@ -30,7 +30,7 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
         res.status(200).json(response.data)
       })
       .catch(function (error) {
-        //console.log(error)
+        console.log(error)
         res.status(500).json({ error })
       })    
 
@@ -64,7 +64,7 @@ export const getGLogin = async (req, res) => {  //google login fucntion
         res.status(200).json(response.data)
       })
       .catch(function (error) {
-        //console.log(error)
+        console.log(error)
         res.status(500).json({ error })
       })    
 }
@@ -103,7 +103,7 @@ export const getIgLogin = async (req, res) => { //instagram login function
             res.status(200).json(response.data)
           })
           .catch(function (error) {
-            //console.log(error)
+            console.log(error)
             res.status(500).json({ error })
           })
     
@@ -146,7 +146,7 @@ export const getDiscLogin = async (req, res) => {  //discord login function
         res.status(200)//.json(response.data)
       })
       .catch(function (error) {
-        //console.log(error)
+        console.log(error)
         res.status(500).json({ error })
       })    
 }

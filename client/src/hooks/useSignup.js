@@ -9,6 +9,7 @@ export const useSignup = () => {
   const signup = async (screen_name, profile_pic, email, password) => {
     setIsLoading(true)
     setError(null)
+    console.log(profile_pic)
 
     const response = await fetch('/api/user/signup', {
       method: 'POST',

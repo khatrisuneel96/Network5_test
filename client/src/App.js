@@ -19,12 +19,13 @@ import Profile from './components/Profile/profileFunctionality';
 function App() {
 
   const { user } = useAuthContext()
+  const current_user = JSON.parse(localStorage.getItem('user'))
 
   if (user) {     //if the user exists (is logged in) render page normally, otherwise render login page, and redirect to login page if on any other page
   return (
     <div>
       <NavBar></NavBar>
-      <TopBar></TopBar>
+      <LoginList/>
       <div className='container'>
         <Routes>
           <Route path='/login' element={!user?<LoginPage/> : <Navigate to="/"/>}></Route>
@@ -36,7 +37,7 @@ function App() {
           <Route path='/email' element={<Email/>}></Route>
           <Route path='/rsvp' element={<Rsvp/>}></Route>
           <Route path='/analytics' element={<Analytics/>}></Route>
-          <Route path='/profile' element={<Profile/>}></Route>
+          <Route path={'/profile/'+current_user.email} element={<Profile/>}></Route>
         </Routes>
       </div>
     </div>
@@ -47,7 +48,7 @@ function App() {
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/signup' element={<SignupPage/>}></Route>
           <Route path='/social-add' element={user?<LoginList/> : <Navigate to="/login"/>}></Route>
-          <Route path='/' element={user?<Dashboard/> : <Navigate to="/login"/>}></Route>
+          <Route path='/' element={<Dashboard/>}></Route>
           <Route path='/feed' element={user?<Feed/> : <Navigate to="/login"/>}></Route>
           <Route path='/messages' element={user?<Messages/> : <Navigate to="/login"/>}></Route>
           <Route path='/email' element={user?<Email/> : <Navigate to="/login"/>}></Route>

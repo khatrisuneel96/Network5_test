@@ -28,6 +28,7 @@ function FacebookLogin(props) {
                 sessionStorage.removeItem("fb_code_pending")
 
                 let code = searchParams.get("code")
+                console.log(code)
                 let redirect_uri = window.location.origin + '/'
                 
                 let config = {"code":code,"redirect_uri":redirect_uri}

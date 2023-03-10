@@ -29,7 +29,7 @@ const Signup = () => {
 
       <div>
         Profile Picture:
-        <FileBase type='file' multiple={false} onChange={(e) => setProfile_pic(e.target.value)} ></FileBase>
+        <FileBase type='file' multiple={false} onDone={({base64}) =>setProfile_pic(base64)}></FileBase>
      </div>
 
       <label>Email address:</label>
