@@ -14,7 +14,6 @@ function MessageVisuals(props) {
         setMessage(message)
     })
 
-    socket.emit('custom-event', 10, 'Hi', {a: 'a'})
 
     let sendMessage = async (e) => {    //submitting the message to the server
         e.preventDefault()

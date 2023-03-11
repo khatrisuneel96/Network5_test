@@ -19,7 +19,8 @@ function FacebookLogin(props) {
             'instagram_manage_insights%2C'+
             'pages_manage_posts'
         ]
-        window.location.replace("https://www.facebook.com/v15.0/dialog/oauth?client_id=354529376664526&redirect_uri="+window.location.origin+"&state=1h12j5215ggdn8ng7fj3"+scopes)
+        let redirect_uri = window.location.origin + "/social-add"
+        window.location.replace("https://www.facebook.com/v15.0/dialog/oauth?client_id=354529376664526&redirect_uri="+redirect_uri+"&state=1h12j5215ggdn8ng7fj3"+scopes)
         sessionStorage.setItem('fb_code_pending', 'pending')
     }
 
@@ -29,7 +30,7 @@ function FacebookLogin(props) {
 
                 let code = searchParams.get("code")
                 console.log(code)
-                let redirect_uri = window.location.origin + '/'
+                let redirect_uri = window.location.origin + '/social-add'
                 
                 let config = {"code":code,"redirect_uri":redirect_uri}
                 dispatch(getFbLogin(config))

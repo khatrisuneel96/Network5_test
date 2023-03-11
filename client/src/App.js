@@ -25,7 +25,7 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
-      <LoginList/>
+      <TopBar/>
       <div className='container'>
         <Routes>
           <Route path='/login' element={!user?<LoginPage/> : <Navigate to="/"/>}></Route>
@@ -47,8 +47,8 @@ function App() {
       <Routes>
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/signup' element={<SignupPage/>}></Route>
-          <Route path='/social-add' element={user?<LoginList/> : <Navigate to="/login"/>}></Route>
-          <Route path='/' element={<Dashboard/>}></Route>
+          <Route path='/social-add' element={<LoginList/>}></Route>
+          <Route path='/' element={user?<Dashboard/> : <Navigate to="/login"/>}></Route>
           <Route path='/feed' element={user?<Feed/> : <Navigate to="/login"/>}></Route>
           <Route path='/messages' element={user?<Messages/> : <Navigate to="/login"/>}></Route>
           <Route path='/email' element={user?<Email/> : <Navigate to="/login"/>}></Route>

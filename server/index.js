@@ -7,6 +7,7 @@ import http from 'http'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+import { chatHandler } from './chatHandler.js'
 import postRoutes2 from './routes/posts.js'
 import loginRoutes from './routes/loginRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
@@ -52,6 +53,7 @@ io.on("connection", (socket) => {   //starting socket.io
     //console.log(socket.id)
     socket.on('send-message', (message) => {    //creating event to recieve message
         socket.broadcast.emit('recieve-message', message)     //sending message back to client
+        chatHandler(message)
         console.log(message)
     })
 })
