@@ -48,10 +48,10 @@ function App() {
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/signup' element={<SignupPage/>}></Route>
           <Route path='/social-add' element={<LoginList/>}></Route>
-          <Route path='/' element={user?<Dashboard/> : <Navigate to="/login"/>}></Route>
+          <Route path='/' element={<Dashboard/>}></Route>
           <Route path='/feed' element={user?<Feed/> : <Navigate to="/login"/>}></Route>
           <Route path='/messages' element={user?<Messages/> : <Navigate to="/login"/>}></Route>
-          <Route path='/email' element={user?<Email/> : <Navigate to="/login"/>}></Route>
+          <Route path='/email' element={<Email/>}></Route>
           <Route path='/rsvp' element={user?<Rsvp/> : <Navigate to="/login"/>}></Route>
           <Route path='/analytics' element={user?<Analytics/> : <Navigate to="/login"/>}></Route>
           <Route path='/profile' element={user?<Profile/> : <Navigate to="/login"/>}></Route>
