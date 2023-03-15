@@ -53,12 +53,16 @@ body {
 }
 
 .nav ul {
-  padding: 0;
+  padding: 0rem;
   margin: 0;
   list-style: none;
   gap: 1rem;
   font-size: 0.8rem;
   font-family: arial;
+}
+
+.nav ul div {
+  margin-right: 1rem;
 }
 
 .nav a {
@@ -88,6 +92,28 @@ body {
   padding-top: 10rem;
 }
 
+.container button{
+  font-size: 0.7rem;
+  background-color: white;
+  color: #19bb65;
+  outline-style: solid;
+  outline-color: #19bb65;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+.container button:hover {
+  outline-color: #0f5831;
+ color: #0f5831;
+}
+
+.container button:active {
+ outline-color: #19bb65;
+ color: #19bb65;
+}
+
 .message_header {
   font-size: 2.25rem;
 }
@@ -110,7 +136,7 @@ body {
   padding: 0.7rem 1rem;
   font-weight: bold;
   margin-left: 3rem;
-  margin-top: 1.5em;
+  margin-top: 1.5rem;
 }
 
 .Loginbar select {
@@ -130,11 +156,6 @@ body {
 
 .Loginbar button:active {
   background-color: #19bb65;
-}
-
-
-.chart {
-  width: 20rem;
 }
 
 .Topbar {
@@ -213,7 +234,7 @@ body {
 
 
 
-.email_header {
+.component_header {
   font-size: 2rem;
   font-weight: bold;
   margin-left: 2rem;
@@ -221,7 +242,7 @@ body {
 
 }
 
-.email_box_parent {
+.component_parent {
   position: absolute;
   font-size: 2.25rem;
   width: 75rem;
@@ -230,7 +251,7 @@ body {
   margin-top: -2rem;
 }
 
-.email_box_parent textarea{
+.component_parent textarea{
   font-family: Arial, Helvetica, sans-serif;
   resize: none;
 }
@@ -365,6 +386,7 @@ margin-left: 1.5rem;
 .profile img{
   width: 20rem;
 }
+
 .profile_logo{
   display: flex;
   justify-content: center;
@@ -377,6 +399,7 @@ margin-left: 1.5rem;
 }
 
 .profile_orgname {
+  font-weight: bold;
   display: flex;
   justify-content: center;
   margin-left: -10rem;
@@ -418,7 +441,9 @@ margin-left: 1.5rem;
   outline-style: solid;
   outline-color: #dbdbdb;
   outline-width: 0.01rem;
-  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 .feed_title {
@@ -442,4 +467,42 @@ margin-left: 1.5rem;
 
 .post_caption {
   padding: 1rem;
+}
+
+.analytics {
+  justify-content: center;
+  margin-top: 3rem;
+  margin-right: 5rem;
+  text-align: center;
+}
+
+.analytics_chart {
+  width: 20rem;
+  margin: 3rem;
+  padding: 0rem 2rem 2rem 2rem;
+  display: inline-block;
+  box-shadow: 0.5rem 0.5rem 0.9rem rgba(0, 0, 0, 0.05);
+  border-radius: 1rem 1rem 1rem 1rem;
+  outline-style: solid;
+  outline-color: #dbdbdb;
+  outline-width: 0.1rem;
+  background-color: white;
+}
+
+.analytics_heading {
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.calendar_element {
+  width: 8rem;
+  height: 8rem;
+  outline-style: solid;
+  display: inline-flex;
+}
+
+.calendar_parent {
+  width: 56rem;
+  height: 40rem;
 }

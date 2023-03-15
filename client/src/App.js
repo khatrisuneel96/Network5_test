@@ -10,7 +10,7 @@ import SignupPage from './components/UserLogin/SignupPage';
 import LoginList from './components/MediaLogin/LoginList'
 import Messages from './components/Messages/MessageTest';
 import Feed from './components/Feed/Feed';
-import Dashboard from './components/Dashboard/dashboardFunctionality';
+import Home from './components/Home/homeVisuals';
 import Email from './components/Email/emailVisuals';
 import Rsvp from './components/Rsvp/rsvpVisuals';
 import Analytics from './components/Analytics/analyticsFunctionality';
@@ -31,7 +31,7 @@ function App() {
           <Route path='/login' element={!user?<LoginPage/> : <Navigate to="/"/>}></Route>
           <Route path='/signup' element={!user?<SignupPage/> : <Navigate to="/"/>}></Route>
           <Route path='/social-add' element={<LoginList/>}></Route>
-          <Route path='/' element={<Dashboard/>}></Route>
+          <Route path='/' element={<Home/>}></Route>
           <Route path='/feed' element={<Feed/> }></Route>
           <Route path='/messages' element={<Messages/>}></Route>
           <Route path='/email' element={<Email/>}></Route>
@@ -48,7 +48,7 @@ function App() {
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/signup' element={<SignupPage/>}></Route>
           <Route path='/social-add' element={<LoginList/>}></Route>
-          <Route path='/' element={user?<Dashboard/> : <Navigate to="/login"/>}></Route>
+          <Route path='/' element={user?<Home/> : <Navigate to="/login"/>}></Route>
           <Route path='/feed' element={user?<Feed/> : <Navigate to="/login"/>}></Route>
           <Route path='/messages' element={user?<Messages/> : <Navigate to="/login"/>}></Route>
           <Route path='/email' element={user?<Email/> : <Navigate to="/login"/>}></Route>

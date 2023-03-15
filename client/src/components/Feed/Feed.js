@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faListUl } from '@fortawesome/free-solid-svg-icons'
 
 import { getPosts } from '../../actions/posts'
 import Posts from './Posts'
@@ -17,7 +19,10 @@ function Feed() {
 
     return (
         <div>
-            <Posts></Posts>
+            <div className='component_parent'>
+                <div className = 'component_header'>Feed <FontAwesomeIcon icon={faListUl}/></div>
+                <Posts></Posts>
+            </div>
         </div>
     );
 }

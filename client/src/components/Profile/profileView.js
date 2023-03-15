@@ -11,13 +11,13 @@ function ProfileView(props) {
     const [Description, setDescription,] = useState('')
     const [Img4, setImg4] = useState('')
 
-    useEffect(() => {
-        axios.post('http://localhost:5000/profiles/get', 
+    const fetchData = async () => {
+         await axios.post('http://localhost:5000/profiles/get', 
         {
             data:"benmoxon256@gmail.com"
         })
         .then((response) => {
-            //console.log(response.data)
+            console.log(response.data)
             setImg1(response.data.img1)
             setOrgname(response.data.org_name)
             setImg2(response.data.img2)
@@ -26,6 +26,10 @@ function ProfileView(props) {
             setDescription(response.data.description)
             setImg4(response.data.img4)
         })
+    }
+
+    useEffect (()  => {
+        fetchData()
     }, [])
 
     return (

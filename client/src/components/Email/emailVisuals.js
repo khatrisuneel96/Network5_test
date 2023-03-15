@@ -16,8 +16,8 @@ function Emailvisuals(props) {
 // Email Front End  
     return (
         <div>
-            <div className = 'email_box_parent'>
-                <div className = 'email_header'>Email <FontAwesomeIcon icon={faEnvelope}/></div>
+            <div className = 'component_parent'>
+                <div className = 'component_header'>Email <FontAwesomeIcon icon={faEnvelope}/></div>
                 <div className = 'email_box'>
                     <div className = 'email_box_top'>
                         <div className = 'email_box_top_text'>All</div>

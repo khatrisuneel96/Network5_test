@@ -1,30 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { Line, Pie, Bar } from 'react-chartjs-2'
 import { Chart as Chartjs, LineElement, CategoryScale, LinearScale, PointElement,
 ArcElement, Tooltip, Legend, BarElement} from 'chart.js'
 Chartjs.register( LineElement, CategoryScale, LinearScale, PointElement, ArcElement, Tooltip, Legend, BarElement)
 function AnalyticsFunctionality(props) {
 
-    let getAnalytics2 = async () => {            
+    const [Content, setContent] = useState()
+
+    useEffect(() => {           
         axios.get('http://localhost:5000/analytics/ig')
         .then(response => {
-            //console.log(response)
+            console.log(response.data.data)
             let profile_views_data = response.data.data[0].values.map(value => value.value)
             let reach_data = response.data.data[1].values.map(value => value.value)
             let impressions_data = response.data.data[2].values.map(value => value.value)
             setContent(<div>
-                {make_line_graph(profile_views_data)}
-                {make_line_graph(reach_data)}
-                {make_line_graph(impressions_data)}</div>)
+                {make_line_graph(profile_views_data,"Profile Views")}
+                {make_line_graph(reach_data,"Reach")}
+                {make_line_graph(impressions_data,"Impressions")}</div>)
         })
-    }
+    }, [])
 
-    let make_line_graph = (data) => {
+    let make_line_graph = (data,heading) => {
         const line_data = {
             labels: data,
             datasets: [{
-                label: 'Sales',
+                label: 'Users',
                 data: data,
                 backgroundColor: ['#ffe709', '#826af0','#19bb65', '#ffe709'],
                 borderColor: 'black',
@@ -32,35 +36,27 @@ function AnalyticsFunctionality(props) {
                 //fill: 'true'
             }]
         }
-        return (<Line data = {line_data}options = {options} ></Line>)
+        return (
+            <div className='analytics_chart'>
+                <div className='analytics_heading'>{heading}</div>
+                <Line data = {line_data}options = {options} ></Line>
+            </div>)
     }
 
     //chart data
-    const data = {
-        labels: ['Mon', 'Tue', 'Wed'],
-        datasets: [{
-            label: 'Sales',
-            data: [1,9,4],
-            backgroundColor: ['#ffe709', '#826af0','#19bb65', '#ffe709'],
-            borderColor: 'black',
-            pointBorderColor: '',
-            //fill: 'true'
-        }]
-    }
     const options = {
         plugins: {
-            legend: true
+            legend: false
         }
     }
-    //pie chart data
 
-    const [Content, setContent] = useState(<div><Pie data = {data}options = {options}></Pie>
-    <Bar data = {data}options = {options}></Bar></div>)
 
     return (
-        <div className='chart'>
-            {Content}
-            <button onClick={getAnalytics2}>Get Analytics</button>
+        <div className='component_parent'>
+            <div className = 'component_header'>Analytics <FontAwesomeIcon icon={faChartSimple}/></div>
+            <div className='analytics'>
+                {Content}
+            </div>
         </div>
     )
 }
