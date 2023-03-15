@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
+import { base_url } from '../api'
 
 export const useLogin = () => {
   const [error, setError] = useState(null)
@@ -15,7 +16,7 @@ export const useLogin = () => {
     var config = {
       method: 'post',
     maxBodyLength: Infinity,
-      url: 'http://localhost:5000/api/user/login',
+      url: base_url+'/api/user/login',
       headers: { 
         'Content-Type': 'application/json'
       },

@@ -5,13 +5,14 @@ import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { Line, Pie, Bar } from 'react-chartjs-2'
 import { Chart as Chartjs, LineElement, CategoryScale, LinearScale, PointElement,
 ArcElement, Tooltip, Legend, BarElement} from 'chart.js'
+import { base_url } from '../../api';
 Chartjs.register( LineElement, CategoryScale, LinearScale, PointElement, ArcElement, Tooltip, Legend, BarElement)
 function AnalyticsFunctionality(props) {
 
     const [Content, setContent] = useState()
 
     useEffect(() => {           
-        axios.get('http://localhost:5000/analytics/ig')
+        axios.get(base_url+'/analytics/ig')
         .then(response => {
             console.log(response.data.data)
             let profile_views_data = response.data.data[0].values.map(value => value.value)

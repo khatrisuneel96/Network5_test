@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios'
+import { base_url } from '../../api';
 function MessageFunctionality(props) {
 
     const [Content, setContent] = useState('')
 
     let getFbMessages = async () => {                               //Getting Facebook Page Messages
-        axios.get('http://localhost:5000/messages/fb')
+        axios.get(base_url+'/messages/fb')
         .then(response => {
             console.log(response.data.data)
             setContent(response.data.data[0].snippet)
@@ -14,7 +15,7 @@ function MessageFunctionality(props) {
     }
 
     let getIgMessages = async () => {                               //Getting Instagram Messages
-        axios.get('http://localhost:5000/messages/ig')
+        axios.get(base_url+'/messages/ig')
         .then(response => {
             console.log(response.data.data)
             //setContent(response.data.data[0].snippet)

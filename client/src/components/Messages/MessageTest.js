@@ -2,8 +2,9 @@
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
+import { base_url } from "../../api";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect(base_url);
 
 function MessageTest() {
   const [username, setUsername] = useState("");

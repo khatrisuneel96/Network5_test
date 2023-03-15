@@ -1,13 +1,23 @@
 import axios from "axios";
 
-const postUrl = 'http://localhost:5000/posts' //the specific routes that the client is accessing in the server
-const FbLoginUrl = 'http://localhost:5000/login/fb'
-const GLoginUrl = 'http://localhost:5000/login/g'
-const DcLoginUrl = 'http://localhost:5000/login/dc'
-const emailUrl = 'http://localhost:5000/email/send'
-const calendarUrl = 'http://localhost:5000/calendar/post'
-const analyticsUrl = 'http://localhost:5000/analytics'
-const profileUrl = 'http://localhost:5000/profiles/post'
+var baseurl = "172.31.21.180:5000"
+
+if (window.location.origin.includes("localhost")) {
+    baseurl = "http://localhost:5000"
+} else {
+     baseurl = "172.31.21.180:5000"
+}
+
+export const base_url = baseurl
+
+const postUrl = baseurl+'/posts' //the specific routes that the client is accessing in the server
+const FbLoginUrl = baseurl+'/login/fb'
+const GLoginUrl = baseurl+'/login/g'
+const DcLoginUrl = baseurl+'/login/dc'
+const emailUrl = baseurl+'/email/send'
+const calendarUrl = baseurl+'/calendar/post'
+const analyticsUrl = baseurl+'/analytics'
+const profileUrl = baseurl+'/profiles/post'
 
 
 

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { postCalendarEvent } from '../../actions/calendarActions'
 import { useSelector } from 'react-redux'
 import axios from 'axios';
+import { base_url } from '../../api';
 
 function HomeFunctionality(props) {
 
@@ -31,7 +32,7 @@ function HomeFunctionality(props) {
   }
   
   let getEvents = async (e) => {
-    axios.get('http://localhost:5000/calendar/get')
+    axios.get(base_url+'/calendar/get')
     .then(response => {
         console.log(response.data)})
   }

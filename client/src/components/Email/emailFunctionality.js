@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { postEmail } from '../../actions/emailActions'
 import axios from 'axios';
 import { Buffer } from 'buffer'
+import { base_url } from '../../api';
 
 function EmailFunctionality(props) {
 
@@ -22,7 +23,7 @@ function EmailFunctionality(props) {
     }
 
     let getEmails = async (e) => {
-        axios.get('http://localhost:5000/email/list')
+        axios.get(base_url+'/email/list')
         .then(response => {
             console.log(response.data)})
     }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { base_url } from '../../api';
 
 function ProfileView(props) {
 
@@ -12,7 +13,7 @@ function ProfileView(props) {
     const [Img4, setImg4] = useState('')
 
     const fetchData = async () => { 
-         await axios.post('http://localhost:5000/profiles/get', 
+         await axios.post(base_url+'/profiles/get',
         {
             data:"benmoxon256@gmail.com"
         })
