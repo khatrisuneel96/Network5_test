@@ -22,6 +22,34 @@ import profileRoutes from './routes/profileRoutes.js'
 
 const app = express()
 
+const server = http.createServer(app)    //setting server
+
+const io = new Server(server, {     //linking socket.io to server
+    cors: {
+        origin: ["https://localhost:3000","https://aaazzz.xyz"] //cors 
+    }, 
+})
+
+const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
+const PORT = process.env.PORT|| 5000; //setting port
+
+io.on("connection", (socket) => {
+    console.log(`User Connected: ${socket.id}`);
+  
+    socket.on("join_room", (data) => {
+      socket.join(data);
+      console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    });
+  
+    socket.on("send_message", (data) => {
+      socket.to(data.room).emit("receive_message", data);
+    });
+  
+    socket.on("disconnect", () => {
+      console.log("User Disconnected", socket.id);
+    });
+  });
+
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
@@ -37,26 +65,6 @@ app.use('/analytics', analyticsRoutes)
 app.use('/post', postRoutes)
 app.use('/api/user', userRoutes)
 app.use('/profiles', profileRoutes)
-
-const server = http.createServer(app)    //setting server
-
-const io = new Server(server, {     //linking socket.io to server
-    cors: {
-        origin: ["https://localhost:3000","https://aaazzz.xyz"] //cors (add website url as well)
-    }, 
-})
-
-const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
-const PORT = process.env.PORT|| 5000; //setting port
-
-io.on("connection", (socket) => {   //starting socket.io
-    //console.log(socket.id)
-    socket.on('send-message', (message) => {    //creating event to recieve message
-        socket.broadcast.emit('recieve-message', message)     //sending message back to client
-        chatHandler(message)
-        console.log(message)
-    })
-})
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(()  => server.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))

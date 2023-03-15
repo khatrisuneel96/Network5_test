@@ -5,9 +5,9 @@ const FbLoginUrl = 'http://localhost:5000/login/fb'
 const GLoginUrl = 'http://localhost:5000/login/g'
 const DcLoginUrl = 'http://localhost:5000/login/dc'
 const emailUrl = 'http://localhost:5000/email/send'
-const calendarUrl = 'http://localhost:5000/calendar'
+const calendarUrl = 'http://localhost:5000/calendar/post'
 const analyticsUrl = 'http://localhost:5000/analytics'
-const profileUrl = 'http://localhost:5000/profiles'
+const profileUrl = 'http://localhost:5000/profiles/post'
 
 
 

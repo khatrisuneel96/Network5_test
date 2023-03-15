@@ -3,15 +3,53 @@ body {
   font-family: arial;
 }
 
+.cornerthing 
+{
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-top: -6rem;
+  margin-left: 2rem;
+  width: 13rem;
+  height: 5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  position: absolute;
+  background-color: #f7f8f9;
+  color: black;
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: -7rem;
+}
+
+.cornerthing img{
+  width: 3rem;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
+
+.logo {
+  position:absolute;
+  margin-top: -14rem;
+  margin-left: 1.5rem;
+}
+
+.logo img {
+  width: 4rem;
+}
+
 .nav {
   position: absolute;
   background-color: white;
   color: rgb(123, 123, 123);
   display: flex;
-  width: 16rem;
+  width: 20rem;
   border-right-style: dashed;
   border-right-color: rgb(240, 240, 240);
-  padding-top: 10rem;
+  padding-top: 15rem;
 }
 
 .nav ul {
@@ -33,7 +71,7 @@ body {
 }
 
 .nav li {
-  width: 16rem;
+  width: 20rem;
 }
 
 .nav li:hover {
@@ -45,16 +83,12 @@ body {
 }
 
 .container {
-  margin-left: 16rem;
+  margin-left: 20rem;
   padding-left: 3rem;
   padding-top: 10rem;
 }
 
 .message_header {
-  font-size: 2.25rem;
-}
-
-.email_header {
   font-size: 2.25rem;
 }
 
@@ -98,34 +132,63 @@ body {
   background-color: #19bb65;
 }
 
-.email_header textarea {
-  background-color:orange;
-}
 
 .chart {
   width: 20rem;
 }
 
-.posts img{
-  width: 20rem;
-}
-
 .Topbar {
   position: absolute;
-  margin-left: 16rem;
-  padding-left: 3rem;
-  margin-top: 7rem;
+  margin-left: 20rem;
+  padding-left: 1rem;
+  margin-top: 3rem;
   list-style: none;
   display: flex;
   justify-content: space-between;
-  width: 80rem;
+  align-items: center;
+  width: 77rem;
 }
 
-
 .Topbar a {
-  color: inherit;
   text-decoration: none;
-  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  background-color: #19bb65;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+}
+
+.Topbar button:hover {
+  background-color: #0f5831;
+}
+
+.Topbar button:active {
+  background-color: #19bb65;
+}
+
+.Topbar a:hover {
+  background-color: #0f5831;
+}
+
+.Topbar a:active {
+  background-color: #19bb65;
+}
+
+.Topbar img {
+  width: 2.3rem;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+.Topbar button {
+  font-size: 0.8rem;
+  background-color: #19bb65;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
 }
 
 .Topbar li:hover {
@@ -146,4 +209,237 @@ body {
   color: inherit;
   text-decoration: none;
   padding: 0.7rem 1rem;
+}
+
+
+
+.email_header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-top: 1.2rem;
+
+}
+
+.email_box_parent {
+  position: absolute;
+  font-size: 2.25rem;
+  width: 75rem;
+  height: 40rem;
+  margin-left: -2rem;
+  margin-top: -2rem;
+}
+
+.email_box_parent textarea{
+  font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+}
+
+.email_box_top {
+  margin-top: 5rem;
+  position: relative;
+  width: 75rem;
+  height: 3rem;
+  background-color: #f0f0f0;
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.email_box {
+  position: relative;
+  width: 75rem;
+  height: 28rem;
+  background-color: white;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.9rem rgba(0, 0, 0, 0.05);
+}
+
+.email_searchBar {
+  position: relative;
+  width: 71.4rem;
+  height: 2rem;
+  background-color: #fafafa;
+  border: 0.1rem solid rgb(201, 201, 201);
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+
+.email_box_top_text {
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color:#3c3c3c;
+  margin-left: 2.5rem;
+  margin-top: 0.8rem;
+}
+
+.email_info_header{
+ position: relative;
+ width: 74rem;
+ height: 2.8rem;
+ margin-left: .5rem;
+ margin-top: 0.2rem;
+ border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+ background-color: #f0f0f0;
+}
+
+.email_info_header_text{
+position: absolute;
+font-size: 2rem;
+margin-top: -1.8rem;
+margin-left: 4rem;
+font-size: 1rem;
+font-weight: bold;
+opacity: 0.6;
+display: grid;
+grid-template-columns: repeat(4, 16rem);
+}
+
+.inbox_icon{
+opacity: 0.6;
+position: relative;
+margin-left: 0.8rem;
+font-size: 1.5rem;
+}
+
+.email_receive_box{
+position: relative;
+width: 65rem;
+height: 18rem;
+margin-left: 1.5rem;
+
+}
+
+.email_receive_parent{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 16rem);
+  width: 65rem;
+  height: 3.5rem;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Email-grid-item-2{
+  margin-left: -3rem;
+}
+
+.Email-grid-item-3{
+  margin-left: -4rem;
+}
+
+.Email-grid-item-4{
+  margin-left: 6rem;
+}
+
+.Receive-grid-item-1{
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+.Receive-grid-item-2{
+  margin-top: 1rem;
+  margin-left: 0rem;
+}
+
+.Receive-grid-item-3{
+  margin-top: 1rem;
+  margin-left: -1rem;
+}
+
+.Receive-grid-item-4{
+  margin-top: 1rem;
+  margin-left: 9rem;
+}
+
+.profile{
+  font-size: 2rem;
+}
+
+.profile img{
+  width: 20rem;
+}
+.profile_logo{
+  display: flex;
+  justify-content: center;
+
+}
+
+.profile_logo img{
+  width: 10rem;
+  margin-left: -10rem;
+}
+
+.profile_orgname {
+  display: flex;
+  justify-content: center;
+  margin-left: -10rem;
+}
+
+.profile_maincontent {
+  margin-left: -10rem;
+  padding: 0rem 5rem;
+}
+
+.profile_contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.profile_description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.profile_bottom_img{
+  display: flex;
+  justify-content: center;
+  margin-left: -10rem;
+}
+
+.profile_bottom_img img {
+  width: 70rem;
+}
+
+.feed_item {
+  width: 40rem;
+  box-shadow: 0.5rem 0.5rem 0.9rem rgba(0, 0, 0, 0.05);
+  border-radius: 1rem 1rem 1rem 1rem;
+  outline-style: solid;
+  outline-color: #dbdbdb;
+  outline-width: 0.01rem;
+  margin-bottom: 3rem;
+}
+
+.feed_title {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.feed_title div {
+  margin-left: 1rem;
+}
+
+.feed_title img {
+  width: 2.3rem;
+  border-radius: 2rem;
+}
+
+.post img{
+  width: 40rem;
+}
+
+.post_caption {
+  padding: 1rem;
 }

@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { postProfile } from '../controllers/profileControllers.js'
+import { postProfile, getProfile } from '../controllers/profileControllers.js'
 
 const router = express.Router()
 
-router.post('/', postProfile)
+router.post('/post', postProfile)
+router.post('/get', getProfile)
 
 export default router

@@ -6,9 +6,9 @@ export default function NavBar() {
     const user = JSON.parse(localStorage.getItem('user'))
 
     return <div className="Topbar">
-        <CustomLink to="/social-add">Add Social Media Accounts</CustomLink>
+        <CustomLink to="/social-add">Add Social Media Accounts +</CustomLink>
         <div>
-            {user.email}
+            <img src={user.profile_pic} alt=""></img>
             <button onClick={logout}>Log Out</button>
         </div>
     </div>

@@ -8,13 +8,13 @@ import TopBar from './components/Navigation/Topbar'
 import LoginPage from './components/UserLogin/LoginPage';
 import SignupPage from './components/UserLogin/SignupPage';
 import LoginList from './components/MediaLogin/LoginList'
-import Messages from './components/Messages/MessageVisuals';
+import Messages from './components/Messages/MessageTest';
 import Feed from './components/Feed/Feed';
 import Dashboard from './components/Dashboard/dashboardFunctionality';
-import Email from './components/Email/emailFunctionality';
+import Email from './components/Email/emailVisuals';
 import Rsvp from './components/Rsvp/rsvpVisuals';
 import Analytics from './components/Analytics/analyticsFunctionality';
-import Profile from './components/Profile/profileFunctionality';
+import Profile from './components/Profile/profileMain';
 
 function App() {
 
@@ -48,10 +48,10 @@ function App() {
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/signup' element={<SignupPage/>}></Route>
           <Route path='/social-add' element={<LoginList/>}></Route>
-          <Route path='/' element={<Dashboard/>}></Route>
+          <Route path='/' element={user?<Dashboard/> : <Navigate to="/login"/>}></Route>
           <Route path='/feed' element={user?<Feed/> : <Navigate to="/login"/>}></Route>
           <Route path='/messages' element={user?<Messages/> : <Navigate to="/login"/>}></Route>
-          <Route path='/email' element={<Email/>}></Route>
+          <Route path='/email' element={user?<Email/> : <Navigate to="/login"/>}></Route>
           <Route path='/rsvp' element={user?<Rsvp/> : <Navigate to="/login"/>}></Route>
           <Route path='/analytics' element={user?<Analytics/> : <Navigate to="/login"/>}></Route>
           <Route path='/profile' element={user?<Profile/> : <Navigate to="/login"/>}></Route>

@@ -9,7 +9,7 @@ export const useSignup = () => {
   const signup = async (screen_name, profile_pic, email, password) => {
     setIsLoading(true)
     setError(null)
-    console.log(profile_pic)
+    //console.log(profile_pic)
 
     const response = await fetch('http://localhost:5000/api/user/signup', {
       method: 'POST',
@@ -24,6 +24,7 @@ export const useSignup = () => {
     }
     if (response.ok) {
       // save the user to local storage
+      console.log(response)
       localStorage.setItem('user', JSON.stringify(json))
 
       // update the auth context

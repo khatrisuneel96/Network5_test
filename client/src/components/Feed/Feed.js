@@ -17,7 +17,6 @@ function Feed() {
 
     return (
         <div>
-            <Form></Form>
             <Posts></Posts>
         </div>
     );
