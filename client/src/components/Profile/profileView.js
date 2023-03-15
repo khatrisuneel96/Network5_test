@@ -11,7 +11,7 @@ function ProfileView(props) {
     const [Description, setDescription,] = useState('')
     const [Img4, setImg4] = useState('')
 
-    const fetchData = async () => {
+    const fetchData = async () => { 
          await axios.post('http://localhost:5000/profiles/get', 
         {
             data:"benmoxon256@gmail.com"
