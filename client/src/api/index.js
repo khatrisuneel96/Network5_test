@@ -7,8 +7,8 @@ if (window.location.origin.includes("localhost")) {
 } else {
      baseurl = "172.31.21.180:5000"
 }
-
 export const base_url = baseurl
+console.log(base_url)
 
 const postUrl = baseurl+'/posts' //the specific routes that the client is accessing in the server
 const FbLoginUrl = baseurl+'/login/fb'
