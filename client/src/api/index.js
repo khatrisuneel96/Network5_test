@@ -10,14 +10,14 @@ if (window.location.origin.includes("localhost")) {
 export const base_url = baseurl
 console.log(base_url)
 
-const postUrl = baseurl+'/posts' //the specific routes that the client is accessing in the server
-const FbLoginUrl = baseurl+'/login/fb'
-const GLoginUrl = baseurl+'/login/g'
-const DcLoginUrl = baseurl+'/login/dc'
-const emailUrl = baseurl+'/email/send'
-const calendarUrl = baseurl+'/calendar/post'
-const analyticsUrl = baseurl+'/analytics'
-const profileUrl = baseurl+'/profiles/post'
+const postUrl = base_url+'/posts' //the specific routes that the client is accessing in the server
+const FbLoginUrl = base_url+'/login/fb'
+const GLoginUrl = base_url+'/login/g'
+const DcLoginUrl = base_url+'/login/dc'
+const emailUrl = base_url+'/email/send'
+const calendarUrl = base_url+'/calendar/post'
+const analyticsUrl = base_url+'/analytics'
+const profileUrl = base_url+'/profiles/post'
 
 
 
