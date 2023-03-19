@@ -31,7 +31,7 @@ const io = new Server(server, {     //linking socket.io to server
     }, 
 })
 
-const CONNECTION_URL = "mongodb+srv://vassardog:rIJOlh3RtOatodIx@cluster0.kl3sctu.mongodb.net/?retryWrites=true&w=majority"   //setting connection url
+const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
 const PORT = process.env.PORT|| 5000; //setting port
 
 io.on("connection", (socket) => {

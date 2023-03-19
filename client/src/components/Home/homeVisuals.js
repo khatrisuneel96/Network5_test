@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CalendarComponent from './calendarComponent';
 
 function HomeVisuals(props) {
 
@@ -18,18 +19,11 @@ function HomeVisuals(props) {
       let getDay = () => {
         console.log(currentDate.getDate()) //displays the current Day of the month
       }
-    useEffect(() => { 
-      let calendar_array = []
-      for (let i = 0; i < 35; i++) {
-          calendar_array.push(<div className='calendar_element'></div>)
-      }
-      setCalendar(<div className='calendar_parent'>{calendar_array}</div>)
-    }, [])
 
 
     return (
         <div className='home'>
-            {Calendar}
+            <CalendarComponent></CalendarComponent>
         </div>
     );
 }
