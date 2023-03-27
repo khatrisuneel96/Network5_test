@@ -33,7 +33,7 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement-1).padStart(2, '0')+'-'+(days_in_last_month+day_count),
                     "key":i,
                     "content":days_in_last_month+day_count,
-                    "events": []
+                    //"events": []
                 })
                 day_count++
             } else if (day_count > days_in_current_month){//next months dates
@@ -42,7 +42,7 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement+1).padStart(2, '0')+'-'+String(day_count-days_in_current_month).padStart(2, '0'), 
                     "key":i,
                     "content":day_count-days_in_current_month,
-                    "events": []
+                   // "events": []
                 })
                 day_count++
             } else {//this months dates
@@ -51,7 +51,7 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement).padStart(2, '0')+'-'+String(day_count).padStart(2, '0'), 
                     "key":i,
                     "content":day_count,
-                    "events": []
+                   // "events": []
                 }) 
                 day_count++
             }
@@ -68,20 +68,52 @@ function CalendarComponent2(props) {
         return(calendar_array)
     }
 
-    let add_events = (calendar_array) => {
+    let finalize_calendar = (calendar_array) => {
+        let final_calendar_array = []
+            for (let i = 0; i < 35; i++) {
+                if(calendar_array[i].events) {
+                    //console.log(calendar_array[i].events[0].summary)
+                    final_calendar_array.push(
+                        <div
+                        className={calendar_array[i].className}
+                        key={i}>
+                            {calendar_array[i].events[0].summary}
+                        </div>
+                    )
+                } else {
+                    final_calendar_array.push(
+                        <div
+                        className={calendar_array[i].className}
+                        key={i}>
+                            {calendar_array[i].content}
+                        </div>
+                    )
+                }
+            }
+        return(final_calendar_array)
+    }
+
+    let add_events_callback = (calendar_array,events) => {
+        calendar_array.forEach(async calendar_element => {
+            events.forEach(async event_element => {
+                if(event_element.start.dateTime) {
+                    if (calendar_element.id.slice(1, 11) === event_element.start.dateTime.slice(0, 10)) {
+                        calendar_element.events = [event_element]
+                    }
+                }
+            })
+        })
+    return(calendar_array)
+    }
+
+    let add_events = (calendar_array) => {//test
         axios.get(base_url+'/calendar/get')
         .then(response => {
             let events = response.data.items
-
-            calendar_array.forEach(async calendar_element => {
-                events.forEach(async event_element => {
-                    if(event_element.start.dateTime) {
-                        if (calendar_element.id.slice(1, 11) === event_element.start.dateTime.slice(0, 10)) {
-                            calendar_element.events.push(event_element) //figure out how to add multiple events
-                        }
-                }
-                })
-            })
+            let calendar_array_final = add_events_callback(calendar_array,events)
+            let calendar_elements = finalize_calendar(calendar_array_final)
+            setCalendar(<div className='calendar_parent'>{calendar_elements}</div>)
+            //console.log(Calendar)
         })
         return(calendar_array)
     }
@@ -91,44 +123,11 @@ function CalendarComponent2(props) {
     useEffect(() => { 
        let calednar_step1 = initialize_calendar()
        let calednar_step2 = add_current_date(calednar_step1)
-       let calendar_step3 = add_events(calednar_step2)
-       setCalendarArray(calendar_step3)
-       console.log(calendar_step3)
+       add_events(calednar_step2)
       }, [MonthIncrement,start_of_month,current_month])
 
       
-    useEffect ( () => {
-        if (CalendarArray.length === 0) {
-            return
-        }
-        else {
-            console.log(CalendarArray)
-            let final_calendar_array = []
-            for (let i = 0; i < 35; i++) {
-                if(CalendarArray[i].events.length > 0) {
-                    console.log(CalendarArray[i].events[0].summary)
-                    final_calendar_array.push(
-                        <div
-                        className={CalendarArray[i].className}
-                        key={i}>
-                            {CalendarArray[i].events[0].summary}
-                        </div>
-                    )
-                } else {
-                    console.log("tes")
-                    final_calendar_array.push(
-                        <div
-                        className={CalendarArray[i].className}
-                        key={i}>
-                            {CalendarArray[i].content}
-                        </div>
-                    )
-                }
-            }
-            setCalendar(<div className='calendar_parent'>{final_calendar_array}</div>)
-        }
-    },[CalendarArray])
-
+   
     return (
         <div className='home'>
              <button onClick={previous_month}>{'<'}</button>
