@@ -13,7 +13,6 @@ function Posts(props) {
         }
         else {
             console.log(posts)
-            //IT TAKES A WHILE TO ACTUALLY RENDER (FIX)
             let post_array = []
             for (let i = posts.length-1; i >= 0; i--) {
                 post_array.push(<div className='feed_item' key={i}>
