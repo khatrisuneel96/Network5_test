@@ -41,6 +41,7 @@ function AnalyticsFunctionality(props) {
             <div className='analytics_chart'>
                 <div className='analytics_heading'>{heading}</div>
                 <Line data = {line_data}options = {options} ></Line>
+                <div className='analytics_subscript'>Last 30 days</div>
             </div>)
     }
 
