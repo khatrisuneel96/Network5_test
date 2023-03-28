@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
-import { Line, Pie, Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import { Chart as Chartjs, LineElement, CategoryScale, LinearScale, PointElement,
 ArcElement, Tooltip, Legend, BarElement} from 'chart.js'
 import { base_url } from '../../api';

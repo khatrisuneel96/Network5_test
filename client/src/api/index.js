@@ -52,7 +52,7 @@ export const postCalendarEvent = (config) => axios.post(calendarUrl, config)
 
 export const getAnalytics = (config) => axios.get(analyticsUrl, config)
 .then((response) => {
-    console.log(response)
+    //console.log(response)
     return response
 })
 

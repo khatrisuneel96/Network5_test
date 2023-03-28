@@ -25,7 +25,7 @@ export const useLogin = () => {
     
     axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data))
+      //console.log(JSON.stringify(response.data))
        // save the user to local storage
        const json = response.data
        localStorage.setItem('user', JSON.stringify(json))

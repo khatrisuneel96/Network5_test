@@ -4,7 +4,6 @@ import { base_url } from '../../api';
 
 function CalendarComponent2(props) {
 
-    let [CalendarArray, setCalendarArray] = useState([])
     let [Calendar, setCalendar] = useState()
     let [MonthIncrement, setMonthIncrement] = useState(0)
     //initializing months
@@ -28,6 +27,7 @@ function CalendarComponent2(props) {
         let day_count = 1 - start_of_month
         for (let i = 0; i < 35; i++) {
             if (day_count < 1) {//last months dates
+                //creating first calendar array
                 calendar_array.push({
                      "className":'calendar_element',
                     "id":'d2023-'+String(current_month+MonthIncrement-1).padStart(2, '0')+'-'+(days_in_last_month+day_count),
@@ -70,17 +70,33 @@ function CalendarComponent2(props) {
 
     let finalize_calendar = (calendar_array) => {
         let final_calendar_array = []
+        console.log(calendar_array)
+            //loop through all 35 calendar elements
             for (let i = 0; i < 35; i++) {
+                //if the current calendar element has any events
                 if(calendar_array[i].events) {
-                    //console.log(calendar_array[i].events[0].summary)
+                    let calendar_event_elements = []
+                    //for each event that it has, push that event into the calendar_event_elements array as a div
+                    calendar_array[i].events.forEach(async event => {
+                        calendar_event_elements.push(
+                            <div className='calendar_event'>{event.summary}</div>
+                        )
+                        console.log(event.summary)
+                    })
+                    console.log(calendar_event_elements)
+                    //then push the entire calendar element into the final_calendar_array which is an array for divs ready for display (including pushing each the calendar_event_elements array)
                     final_calendar_array.push(
                         <div
                         className={calendar_array[i].className}
                         key={i}>
-                            {calendar_array[i].events[0].summary}
+                            <div className='element_content'>
+                                {calendar_array[i].content}
+                                {calendar_event_elements}
+                            </div>
                         </div>
                     )
                 } else {
+                    //if no events, push calendar element into final_calendar_array without adding any events
                     final_calendar_array.push(
                         <div
                         className={calendar_array[i].className}
@@ -98,7 +114,11 @@ function CalendarComponent2(props) {
             events.forEach(async event_element => {
                 if(event_element.start.dateTime) {
                     if (calendar_element.id.slice(1, 11) === event_element.start.dateTime.slice(0, 10)) {
-                        calendar_element.events = [event_element]
+                        if(calendar_element.events) {
+                            calendar_element.events.push([event_element])
+                        } else {
+                            calendar_element.events = [event_element]
+                        }
                     }
                 }
             })

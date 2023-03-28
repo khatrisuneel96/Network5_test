@@ -505,8 +505,26 @@ margin-left: 1.5rem;
 .calendar_parent {
   width: 56rem;
   height: 40rem;
+  
 }
 
 .calendar_element.current_date {
   background-color: red;
+}
+
+.element_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar_event {
+  background-color: #19bb65;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 6rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
 }
