@@ -18,7 +18,6 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 mongoose.set('strictQuery', true);
 
-import { chatHandler } from './chatHandler.js'
 import postRoutes2 from './routes/posts.js'
 import loginRoutes from './routes/loginRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
@@ -45,7 +44,7 @@ const io = new Server(server, {     //linking socket.io to server
 const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
 const PORT = process.env.PORT|| 5000; //setting port
 
-io.on("connection", (socket) => {
+io.on("connection", (socket) => {//socket.io chat capability
     console.log(`User Connected: ${socket.id}`);
   
     socket.on("join_room", (data) => {

@@ -28,3 +28,12 @@ export const createPosts = async (req, res) => {
         res.status(409).json({message: error.message})
     }
 }
+
+
+export const deletePost = async (req,res) => {
+    const { id } = req.params
+
+    await PostMessage.findByIdAndRemove(id)
+
+    res.json({ message: 'Post deleted successfully'})
+}
