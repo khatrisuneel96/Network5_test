@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  let message_blocker = false //setting message blocker to stop duplicate messages (glitch)
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -23,9 +24,14 @@ function Chat({ socket, username, room }) {
   };
 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      console.log(data)
-      setMessageList((list) => [...list, data]);
+    socket.on("receive_message", (data) => { //recieving messages (message blocker made to stop duplicate message glitch)
+      if (message_blocker === false) {
+        setMessageList((list) => [...list, data]);
+        console.log(data)
+        message_blocker = true
+      } else {
+        message_blocker = false
+      }
     });
   }, [socket]);
 
