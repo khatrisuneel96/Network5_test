@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getGLogin } from '../../actions/loginActions'
 
 function GoogleLogin(props) { 
-
+    const current_user = JSON.parse(localStorage.getItem('user'))
     const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
 
     const [searchParams] = useSearchParams()
@@ -22,7 +22,11 @@ function GoogleLogin(props) {
                 let code = searchParams.get("code")
                 let redirect_uri = window.location.origin + "/social-add"
                 
-                let config = {"code":code,"redirect_uri":redirect_uri}
+                let config = {
+                    "code":code,
+                    "redirect_uri":redirect_uri,
+                    "user": current_user.email
+                }
                 dispatch(getGLogin(config))
             }
 

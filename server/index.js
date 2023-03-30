@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -27,7 +37,8 @@ const server = http.createServer(app)    //setting server
 
 const io = new Server(server, {     //linking socket.io to server
     cors: {
-        origin: ["https://localhost:3000","https://aaazzz.xyz"] //cors 
+        origin: ["https://localhost:3000","https://aaazzz.xyz"],
+        methods: ["GET", "POST"],
     }, 
 })
 
@@ -70,3 +81,4 @@ app.use('/profiles', profileRoutes)
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(()  => server.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
     .catch((error) => console.log(error.message));
+    

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { base_url } from '../../api';
 
 function HomeFunctionality(props) {
-
+  const current_user = JSON.parse(localStorage.getItem('user'))
   const events = useSelector((state) => state.events)
   let [CalendarData, setCalendarData] = useState()
 

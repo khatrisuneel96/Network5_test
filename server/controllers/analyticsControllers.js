@@ -9,14 +9,21 @@ export const getIgAnalytics = async (req, res) => { //webook endpoints
     let current_month = (todays_date.getMonth()+1)
     let start_month = String(current_month-1).padStart(2, '0')
     let end_month = String(current_month).padStart(2, '0')
-    let day_of_month = String(todays_date.getDate()).padStart(2, '0')
-    console.log(day_of_month)
+    let end_date = String(todays_date.getDate()).padStart(2, '0')
+    let days_in_last_month = new Date(2023, (current_month-1), 0).getDate()
+    let start_date = 1
+
+    if (days_in_last_month < end_date) {
+      start_date = days_in_last_month
+    } else {
+      start_date = end_date
+    }
 
     var config = {
         method: 'get',
         url: 'https://graph.facebook.com/17841422229166819/insights?metric=profile_views,reach,impressions&period=day&'+
-        'since=2023-'+start_month+'-'+day_of_month+'&'+
-        'until=2023-'+end_month+'-'+day_of_month,
+        'since=2023-'+start_month+'-'+start_date+'&'+
+        'until=2023-'+end_month+'-'+end_date,
         headers: { 
           'Authorization': 'Bearer '+ FbToken.access_token
         }

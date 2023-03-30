@@ -55,7 +55,7 @@ export const getEvents = async (req, res) => { //sending email through gmail
               res.status(200).json(response.data)
             })
             .catch(function(error) {
-              console.log(error)
+              //console.log(error)
               res.status(500).json({ error })
             })
 }

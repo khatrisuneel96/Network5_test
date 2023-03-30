@@ -1,4 +1,5 @@
 import PostMessage from "../models/postMessage.js"
+import User from '../models/userModel.js'
 export const getPosts = async (req, res) => {
     try {
         const postMessages = await PostMessage.find()
@@ -12,9 +13,13 @@ export const getPosts = async (req, res) => {
 
 export const createPosts = async (req, res) => {
     const post = req.body
+    //console.log(post.creator)
+    const creator = await post.creator
+    const user = await User.findOne({email: creator})
+    //console.log(user.profile_pic)
 
     const newPost = new PostMessage(post)
-
+    newPost.profile_pic = user.profile_pic
     try {
         await newPost.save()
 

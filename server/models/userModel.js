@@ -58,6 +58,7 @@ userSchema.statics.login = async function(email, password) {
   console.log(email)
 
   if (!email || !password) {
+    console.log("normal error")
     throw Error('All fields must be filled')
   }
 

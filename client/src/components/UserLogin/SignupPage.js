@@ -2,6 +2,7 @@ import { useState } from "react"
 import FileBase from 'react-file-base64'
 import { useSignup } from "../../hooks/useSignup"
 import CustomLink from "../../customComponents/CustomLink"
+import Logo from "../../images/Logo_1.6.png"
 
 const Signup = () => {
   const [Screen_name, setScreen_name] = useState('')
@@ -16,7 +17,11 @@ const Signup = () => {
     await signup(Screen_name, Profile_pic, Email, Password)
   }
 
-  return (<div>
+  return (<>
+    <div className="logo">
+      <img src={Logo} alt=""></img>
+    </div>
+    <div className="login_page">
     <form className="signup" onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
       
@@ -27,7 +32,7 @@ const Signup = () => {
         value={Screen_name} 
       />
 
-      <div>
+    <div>
         Profile Picture:
         <FileBase type='file' multiple={false} onDone={({base64}) =>setProfile_pic(base64)}></FileBase>
      </div>
@@ -52,7 +57,8 @@ const Signup = () => {
       Have an account? 
       <CustomLink to="/login">Log in</CustomLink>
     </div>
-    </div>)
+    </div>
+    </>)
 }
 
 export default Signup

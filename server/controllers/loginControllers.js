@@ -9,6 +9,7 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
     const fbvalues = await Secret.findOne({media: "facebook"})         //get parameter values from database
     var redirect_uri = req.body.redirect_uri
     var code = req.body.code 
+    var user = req.body.user
     var config = {                                                                          //setting values for request
         method: 'get',
       maxBodyLength: Infinity,
@@ -18,11 +19,12 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
         '&client_id='+fbvalues.client_id+
         '&client_secret='+fbvalues.secret
       }
-      await ApiToken.deleteMany({media: "facebook"})                                        //delete old values
+      await ApiToken.deleteMany({media: "facebook",user:user})                                        //delete old values
       axios(config)
       .then(async function (response) {
         const data = response.data
         data.media = 'facebook'
+        data.user = user
         //console.log(data)
         const newToken = new ApiToken(data)            //setting the value for mongodb    
         await newToken.save()                          //saving the value to mongodb 
@@ -42,6 +44,7 @@ export const getGLogin = async (req, res) => {  //google login fucntion
     const gvalues = await Secret.findOne({media: "google"})         //get parameter values from database
     var redirect_uri = req.body.redirect_uri 
     var code = req.body.code 
+    var user = req.body.user
     var config = {                                                                          //setting values for request
         method: 'post',
       maxBodyLength: Infinity,
@@ -52,11 +55,12 @@ export const getGLogin = async (req, res) => {  //google login fucntion
         '&client_secret='+gvalues.secret+
         '&grant_type=authorization_code'
       }
-      await ApiToken.deleteMany({media: "google"})                                        //delete old values
+      await ApiToken.deleteMany({media: "google",user:user})                                        //delete old values
       axios(config)
       .then(async function (response) {
         const data = response.data
         data.media = 'google'
+        data.user = user
         //console.log(data)
         const newToken = new ApiToken(data)            //setting the value for mongodb    
         await newToken.save()                          //saving the value to mongodb 
@@ -73,9 +77,10 @@ export const getGLogin = async (req, res) => {  //google login fucntion
 
 export const getIgLogin = async (req, res) => { //instagram login function
     const PageId = req.body.id                  //get Fb page Id that was past from client
+    var user = req.body.user
     console.log(req.body)
     const FbToken = await ApiToken.findOne({media: "facebook"})
-    await ApiToken.deleteMany({media: "instagram"})                                        //delete old values
+    await ApiToken.deleteMany({media: "instagram",user:user})                                        //delete old values
 
     var config = {
         method: 'get',
@@ -92,10 +97,12 @@ export const getIgLogin = async (req, res) => { //instagram login function
             newToken.media = 'instagram'
             const FbPageMatch = await Page.findOne({id: PageId})  //Getting the fbpage element that has the ig account attached
             newToken.access_token = FbPageMatch.access_token  //saving fb page access token as ig access token in database
+            newToken.user = user
             await newToken.save()                          //saving the value to mongodb    
-            await Page.deleteMany({media: "instagram"}) //creating new page element in database for ig page
+            await Page.deleteMany({media: "instagram",user:user}) //creating new page element in database for ig page
             const newPage = new Page()
             newPage.media = 'instagram'
+            newPage.user = user
             newPage.name = FbPageMatch.name             //setting the ig page to have the same name as its matching facebook page
             newPage.access_token = FbPageMatch.access_token //setting the ig page to have the same access token as its matching facebook page
             newPage.id = response.data.instagram_business_account.id //setting the ig page to have the ig page id
@@ -115,7 +122,7 @@ export const getDiscLogin = async (req, res) => {  //discord login function
     const dcvalues = await Secret.findOne({media: "discord"})         //get parameter values from database
     var redirect_uri = req.body.redirect_uri 
     var code = req.body.code 
-    console.log(code)
+    var user = req.body.user
 
     var data = qs.stringify({
         'code': code,
@@ -134,11 +141,12 @@ export const getDiscLogin = async (req, res) => {  //discord login function
           },
           data : data
     }
-      await ApiToken.deleteMany({media: "discord"})                                        //delete old values
+      await ApiToken.deleteMany({media: "discord",user:user})                                        //delete old values
       axios(config)
       .then(async function (response) {
         const data = response.data
         data.media = 'discord'
+        data.user = user
         //console.log(data)
         const newToken = new ApiToken(data)            //setting the value for mongodb    
         await newToken.save()                          //saving the value to mongodb 

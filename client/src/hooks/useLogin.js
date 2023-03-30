@@ -11,7 +11,7 @@ export const useLogin = () => {
   const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
-
+/*
     var data = JSON.stringify({ email, password })
     var config = {
       method: 'post',
@@ -42,8 +42,8 @@ export const useLogin = () => {
       setError(error)
     });
   
+*/
 
-/*
     const response = await fetch('http://localhost:5000/api/user/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -64,7 +64,7 @@ export const useLogin = () => {
 
       // update loading state
       setIsLoading(false)
-    }*/
+    }
   }
 
   return { login, isLoading, error }

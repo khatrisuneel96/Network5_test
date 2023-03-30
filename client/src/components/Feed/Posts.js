@@ -17,7 +17,7 @@ function Posts(props) {
             for (let i = posts.length-1; i >= 0; i--) {
                 post_array.push(<div className='feed_item' key={i}>
                 <div className='feed_title'>
-                    <img src={current_user.profile_pic} alt=""></img>
+                    <img src={posts[i].profile_pic} alt=""></img>
                     <div>{posts[i].creator}</div>
                 </div>
                 <div className='post'>
