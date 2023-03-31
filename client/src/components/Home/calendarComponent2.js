@@ -56,7 +56,7 @@ function CalendarComponent2(props) {
         return(calendar_array)
     }
 
-    let add_current_date = (calendar_array) => {
+    let add_current_date = (calendar_array) => { //adds a new class to the current date so it can be displayed differently 
         calendar_array.forEach(async element => {
             if (element.id === 'd'+todays_date_iso) {
                 element.className = "calendar_element current_date"
@@ -67,7 +67,7 @@ function CalendarComponent2(props) {
 
     let finalize_calendar = (calendar_array) => {
         let final_calendar_array = []
-        console.log(calendar_array)
+        //console.log(calendar_array)
             //loop through all 35 calendar elements
             for (let i = 0; i < 35; i++) {
                 //if the current calendar element has any events
@@ -76,7 +76,7 @@ function CalendarComponent2(props) {
                     //for each event that it has, push that event into the calendar_event_elements array as a div
                     calendar_array[i].events.forEach(async event => {
                         calendar_event_elements.push(
-                            <div className='calendar_event'>{event.summary}</div>
+                            <div key={event.summary} className='calendar_event'>{event.summary}</div>
                         )
                         //console.log(event.summary)
                     })

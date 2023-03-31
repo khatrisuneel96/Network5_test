@@ -35,26 +35,21 @@ function Chat({ socket, username, room }) {
     });
   }, [socket]);
 
-  return (
-    <div className="chat-window">
-      <div className="chat-header">
-        <p>Live Chat</p>
+  return (<>
+    <div className="chat_window">
+      <div className="chat_header">
       </div>
-      <div className="chat-body">
-        <div className="message-container">
+      <div className="chat_body">
+        <div className="message_container">
           {messageList.map((messageContent) => {
-            return (
+            return ( //add key to below div at some point
               <div
                 className="message"
                 id={username === messageContent.author ? "you" : "other"}
               >
                 <div>
-                  <div className="message-content">
+                  <div className="message_content">
                     <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
                   </div>
                 </div>
               </div>
@@ -62,22 +57,22 @@ function Chat({ socket, username, room }) {
           })}
         </div>
       </div>
-      <div className="chat-footer">
-        <input
-          type="text"
-          value={currentMessage}
-          placeholder="Hey..."
-          onChange={(event) => {
-            setCurrentMessage(event.target.value);
-          }}
-          onKeyPress={(event) => {
-            event.key === "Enter" && sendMessage();
-          }}
-        />
-        <button onClick={sendMessage}>&#9658;</button>
-      </div>
     </div>
-  );
+    <div className="chat_footer">
+    <input
+      type="text"
+      value={currentMessage}
+      placeholder="message..."
+      onChange={(event) => {
+        setCurrentMessage(event.target.value);
+      }}
+      onKeyPress={(event) => {
+        event.key === "Enter" && sendMessage();
+      }}
+    />
+    <button onClick={sendMessage}>&#9658;</button>
+  </div>
+  </>);
 }
 
 export default Chat;
