@@ -33,7 +33,6 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement-1).padStart(2, '0')+'-'+(days_in_last_month+day_count),
                     "key":i,
                     "content":days_in_last_month+day_count,
-                    //"events": []
                 })
                 day_count++
             } else if (day_count > days_in_current_month){//next months dates
@@ -42,7 +41,6 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement+1).padStart(2, '0')+'-'+String(day_count-days_in_current_month).padStart(2, '0'), 
                     "key":i,
                     "content":day_count-days_in_current_month,
-                   // "events": []
                 })
                 day_count++
             } else {//this months dates
@@ -51,7 +49,6 @@ function CalendarComponent2(props) {
                     "id":'d2023-'+String(current_month+MonthIncrement).padStart(2, '0')+'-'+String(day_count).padStart(2, '0'), 
                     "key":i,
                     "content":day_count,
-                   // "events": []
                 }) 
                 day_count++
             }
@@ -81,9 +78,9 @@ function CalendarComponent2(props) {
                         calendar_event_elements.push(
                             <div className='calendar_event'>{event.summary}</div>
                         )
-                        console.log(event.summary)
+                        //console.log(event.summary)
                     })
-                    console.log(calendar_event_elements)
+                    //console.log(calendar_event_elements)
                     //then push the entire calendar element into the final_calendar_array which is an array for divs ready for display (including pushing each the calendar_event_elements array)
                     final_calendar_array.push(
                         <div
@@ -115,7 +112,7 @@ function CalendarComponent2(props) {
                 if(event_element.start.dateTime) {
                     if (calendar_element.id.slice(1, 11) === event_element.start.dateTime.slice(0, 10)) {
                         if(calendar_element.events) {
-                            calendar_element.events.push([event_element])
+                            calendar_element.events.push(event_element)
                         } else {
                             calendar_element.events = [event_element]
                         }
@@ -150,9 +147,11 @@ function CalendarComponent2(props) {
    
     return (
         <div className='home'>
-             <button onClick={previous_month}>{'<'}</button>
-            <>{months[(current_month+MonthIncrement-1)]}</>
-            <button onClick={next_month}>{'>'}</button>
+             <div className='calendar_topbar'>
+                <button onClick={previous_month}>{'<'}</button>
+                <>{months[(current_month+MonthIncrement-1)]}</>
+                <button onClick={next_month}>{'>'}</button>
+            </div>
             {Calendar}
         </div>
     )

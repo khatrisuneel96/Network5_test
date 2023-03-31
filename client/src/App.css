@@ -469,6 +469,14 @@ margin-left: 1.5rem;
 
 .post_caption {
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.6rem;
+}
+
+.trash_icon {
+  font-size: 1.3rem;
+  
 }
 
 .analytics {
@@ -501,21 +509,45 @@ margin-left: 1.5rem;
   font-size: 1rem;
 }
 
+.calendar_topbar {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -4rem;
+  font-weight: bold;
+}
+
+.calendar_topbar button {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  outline-width: 0rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 .calendar_element {
-  width: 8rem;
-  height: 8rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  width: 10rem;
+  height: 10rem;
   outline-style: solid;
+  outline-width: 0.01rem;
+  outline-color: #dbdbdb;
   display: inline-flex;
 }
 
 .calendar_parent {
-  width: 56rem;
-  height: 40rem;
+  width: 75rem;
+  height: 50rem;
   
 }
 
 .calendar_element.current_date {
-  background-color: red;
+  background-color: #dbdbdb;
 }
 
 .element_content {
@@ -528,11 +560,14 @@ margin-left: 1.5rem;
   color: white;
   font-weight: bold;
   font-size: 0.7rem;
-  width: 6rem;
+  width: 8rem;
   height: 1rem;
   margin-left: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem;
+  padding-bottom: 0.75rem;
   border-radius: 0.3rem;
+  align-items: center;
+  text-overflow: ellipsis " [..]";
 }
 
 .login_page {
@@ -600,9 +635,10 @@ margin-left: 1.5rem;
 .home_post_buttons {
   display: flex;
   justify-content: space-around;
-  width: 56rem;
-  margin-top: -2rem;
-  margin-bottom: 1rem;
+  margin-left: 2rem;
+  width: 70rem;
+  margin-top: -4rem;
+  margin-bottom: 0rem;
 }
 
 .home_post_buttons button {

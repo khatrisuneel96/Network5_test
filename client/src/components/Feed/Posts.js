@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePost } from '../../actions/posts'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function Posts(props) {
     const dispatch = useDispatch()
     const current_user = JSON.parse(localStorage.getItem('user'))
     const posts = useSelector((state) => state.posts)
     const [Content, setContent] = useState()
-
-    let delete_posts = (id) => {
-        console.log(id)
-    }
 
     useEffect ( () => {
         if (posts.length === 0) {
@@ -19,8 +17,8 @@ function Posts(props) {
         else {
             console.log(posts) 
             let post_array = []
-            for (let i = posts.length-1; i >= 0; i--) {//add post deletion here
-                if (posts[i].creator === current_user.email) {
+            for (let i = posts.length-1; i >= 0; i--) {
+                if (posts[i].creator === current_user.email) {//only add post deletion to posts that match your own username
                     post_array.push(<div className='feed_item' key={i}>
                     <div className='feed_title'>
                         <img src={posts[i].profile_pic} alt=""></img>
@@ -30,7 +28,7 @@ function Posts(props) {
                         <img src={posts[i].selectedFile} alt=""></img>
                         <div className='post_caption'>
                             {posts[i].message}
-                            <div onClick={() => dispatch(deletePost(posts[i]._id))}>delete</div>
+                            <FontAwesomeIcon className='trash_icon' onClick={() => dispatch(deletePost(posts[i]._id))} icon={faTrash}/>
                         </div>
                     </div>
                     </div>)

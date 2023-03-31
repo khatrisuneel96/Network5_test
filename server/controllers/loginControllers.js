@@ -19,7 +19,7 @@ export const getFbLogin = async (req, res) => { //facebook login fucntion
         '&client_id='+fbvalues.client_id+
         '&client_secret='+fbvalues.secret
       }
-      await ApiToken.deleteMany({media: "facebook",user:user})                                        //delete old values
+      await ApiToken.deleteMany({media: "facebook"})     //delete old values (add ,user:user as check)
       axios(config)
       .then(async function (response) {
         const data = response.data
@@ -55,7 +55,7 @@ export const getGLogin = async (req, res) => {  //google login fucntion
         '&client_secret='+gvalues.secret+
         '&grant_type=authorization_code'
       }
-      await ApiToken.deleteMany({media: "google",user:user})                                        //delete old values
+      await ApiToken.deleteMany({media: "google"})           //delete old values (add ,user:user as check)
       axios(config)
       .then(async function (response) {
         const data = response.data
@@ -99,7 +99,7 @@ export const getIgLogin = async (req, res) => { //instagram login function
             newToken.access_token = FbPageMatch.access_token  //saving fb page access token as ig access token in database
             newToken.user = user
             await newToken.save()                          //saving the value to mongodb    
-            await Page.deleteMany({media: "instagram",user:user}) //creating new page element in database for ig page
+            await Page.deleteMany({media: "instagram"}) //creating new page element in database for ig page (add ,user:user as check)
             const newPage = new Page()
             newPage.media = 'instagram'
             newPage.user = user
@@ -141,7 +141,7 @@ export const getDiscLogin = async (req, res) => {  //discord login function
           },
           data : data
     }
-      await ApiToken.deleteMany({media: "discord",user:user})                                        //delete old values
+      await ApiToken.deleteMany({media: "discord"})     //delete old values (add ,user:user as check)
       axios(config)
       .then(async function (response) {
         const data = response.data
