@@ -5,7 +5,7 @@ import axios from 'axios'
 import { base_url } from '../../api';
 
 
-function Emailvisuals(props) {
+function Emailvisuals(props) {//email visuals
 
     const emails = [
         { name: 'name1', date: '1/1/23', subject: 'subject1', message:'message1'},
