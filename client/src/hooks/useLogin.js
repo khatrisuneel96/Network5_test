@@ -11,7 +11,7 @@ export const useLogin = () => {
   const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
-
+/*
     var data = JSON.stringify({ email, password })
     var config = {
       method: 'post',
@@ -25,7 +25,7 @@ export const useLogin = () => {
     
     axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data))
+      //console.log(JSON.stringify(response.data))
        // save the user to local storage
        const json = response.data
        localStorage.setItem('user', JSON.stringify(json))
@@ -42,8 +42,8 @@ export const useLogin = () => {
       setError(error)
     });
   
+*/
 
-/*
     const response = await fetch('http://localhost:5000/api/user/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -64,7 +64,7 @@ export const useLogin = () => {
 
       // update loading state
       setIsLoading(false)
-    }*/
+    }
   }
 
   return { login, isLoading, error }

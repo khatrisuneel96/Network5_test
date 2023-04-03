@@ -8,7 +8,7 @@ import TopBar from './components/Navigation/Topbar'
 import LoginPage from './components/UserLogin/LoginPage';
 import SignupPage from './components/UserLogin/SignupPage';
 import LoginList from './components/MediaLogin/LoginList'
-import Messages from './components/Messages/MessageTest';
+import Messages from './components/Messages/ChatVisuals';
 import Feed from './components/Feed/Feed';
 import Home from './components/Home/homeVisuals';
 import Email from './components/Email/emailVisuals';

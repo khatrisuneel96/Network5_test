@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInbox,faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
+import { base_url } from '../../api';
 
 
 function Emailvisuals(props) {
@@ -12,6 +14,13 @@ function Emailvisuals(props) {
         { name: 'name4', date: '1/4/23', subject: 'subject4', message:'message4'},
         { name: 'name5', date: '1/5/23', subject: 'subject5', message:'message5'},
     ]
+
+    useEffect(() => { 
+        axios.get(base_url+'/email/list')
+        .then(response => {
+            console.log(response.data)})
+        }, [])
+
 
 // Email Front End  
     return (

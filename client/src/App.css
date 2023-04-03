@@ -114,6 +114,26 @@ body {
  color: #19bb65;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dbdbdb;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8c8c8c;
+}
+
 .message_header {
   font-size: 2.25rem;
 }
@@ -152,10 +172,12 @@ body {
 
 .Loginbar button:hover {
   background-color: #0f5831;
+  color: white;
 }
 
 .Loginbar button:active {
   background-color: #19bb65;
+  color: white;
 }
 
 .Topbar {
@@ -467,6 +489,14 @@ margin-left: 1.5rem;
 
 .post_caption {
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.6rem;
+}
+
+.trash_icon {
+  font-size: 1.3rem;
+  
 }
 
 .analytics {
@@ -479,7 +509,7 @@ margin-left: 1.5rem;
 .analytics_chart {
   width: 20rem;
   margin: 3rem;
-  padding: 0rem 2rem 2rem 2rem;
+  padding: 0rem 2rem 1rem 2rem;
   display: inline-block;
   box-shadow: 0.5rem 0.5rem 0.9rem rgba(0, 0, 0, 0.05);
   border-radius: 1rem 1rem 1rem 1rem;
@@ -495,14 +525,213 @@ margin-left: 1.5rem;
   font-weight: bold;
 }
 
+.analytics_subscript {
+  font-size: 1rem;
+}
+
+.calendar_topbar {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -4rem;
+  font-weight: bold;
+}
+
+.calendar_topbar button {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  outline-width: 0rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 .calendar_element {
-  width: 8rem;
-  height: 8rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  width: 10rem;
+  height: 10rem;
   outline-style: solid;
+  outline-width: 0.01rem;
+  outline-color: #dbdbdb;
   display: inline-flex;
 }
 
 .calendar_parent {
-  width: 56rem;
-  height: 40rem;
+  width: 75rem;
+  height: 50rem;
+  
 }
+
+.calendar_element.current_date {
+  background-color: #dbdbdb;
+}
+
+.element_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar_event {
+  background-color: #19bb65;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 8rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  padding: 0.25rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.3rem;
+  align-items: center;
+  text-overflow: ellipsis " [..]";
+}
+
+.login_page {
+  margin-top: 15rem;
+  margin-left: 15rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+}
+
+.login_page h3 {
+  font-size: 2rem;
+}
+
+.login_page button {
+  font-size: 1rem;
+  background-color: #19bb65;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+}
+
+.login_page button:hover {
+  background-color: #0f5831;
+}
+
+.login_page button:active {
+  background-color: #19bb65;
+}
+
+.login_page input {
+  font-size: 1rem;
+  margin: 0.2rem;
+}
+
+.error {
+  background-color: #fac8c2;
+  color: #520005;
+  height: 2rem;
+  width: 12rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+  padding-left: 0.5rem;
+  text-decoration: underline;
+  margin-left: 8.8rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+.user-auth {
+  margin-top: 2rem;
+}
+
+.login_page input[type="file" i]::-webkit-file-upload-button {
+  border-radius: 1rem;
+}
+
+.login_page input[type="file" i]::-webkit-file-upload-button:hover {
+  background-color: #adadad;
+}
+
+.home_post_buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 2rem;
+  width: 70rem;
+  margin-top: -4rem;
+  margin-bottom: 0rem;
+}
+
+.home_post_buttons button {
+  font-size: 1rem;
+  border-radius: 2rem;
+  outline-width: 0.15rem;
+  padding: 0.4rem;
+  padding-right: 0.7rem;
+}
+
+.chat_window_parent {
+  width: 70rem;
+  display: flex;
+}
+
+.chat_window {
+  border-left: #dbdbdb;
+  border-left-style: solid;
+  height: 40rem;
+  width: 50rem;
+  overflow-y: scroll;
+
+}
+
+.join_chat_container {
+  height: 40rem;
+  width: 20rem;
+}
+
+.chat_footer {
+  position: absolute;
+  margin-top: 41rem;
+  margin-left: 23rem;
+}
+
+.chat_footer input {
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.chat_footer button {
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 2rem;
+  color: #2d9afc;
+  outline: #2d9afc;
+  outline-style: solid;
+}
+
+.chat_footer button:hover {
+  outline-color: #144e80;
+ color: #144e80;
+}
+
+.chat_footer button:active {
+ outline-color: #2d9afc;
+ color: #2d9afc;
+}
+
+
+.message {
+  background-color: #2d9afc;
+  color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 8rem;
+  padding: 0.0005rem;
+  padding-left: 0.5rem;
+}
+
+
+
+

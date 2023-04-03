@@ -21,6 +21,7 @@ function Feed() {
         <div>
             <div className='component_parent'>
                 <div className = 'component_header'>Feed <FontAwesomeIcon icon={faListUl}/></div>
+                <Form></Form>
                 <Posts></Posts>
             </div>
         </div>

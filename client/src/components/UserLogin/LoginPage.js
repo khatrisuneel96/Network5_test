@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useLogin } from "../../hooks/useLogin"
 import CustomLink from "../../customComponents/CustomLink"
+import Logo from "../../images/Logo_1.6.png"
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
@@ -13,7 +14,11 @@ const LoginPage = () => {
     console.log(email, password)
   }
 
-  return (<div>
+  return (<>
+  <div className="logo">
+      <img src={Logo} alt=""></img>
+  </div>
+  <div className="login_page">
     <form className="login" onSubmit={handleSubmit}>
       <h3>Log In</h3>
       
@@ -34,9 +39,10 @@ const LoginPage = () => {
     {error && <div className="error">{error}</div>}
     <div className="user-auth">
       Don't have an account? 
-      <CustomLink to="/signup">Sign up</CustomLink>
+      <CustomLink className="login_switch" to="/signup">Sign up</CustomLink>
     </div>
-    </div>)
+    </div>
+    </>)
 }
 
 export default LoginPage

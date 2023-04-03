@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -6,8 +16,8 @@ import { Server } from 'socket.io'   //importing socket.io
 import http from 'http'
 import * as dotenv from 'dotenv'
 dotenv.config()
+mongoose.set('strictQuery', true);
 
-import { chatHandler } from './chatHandler.js'
 import postRoutes2 from './routes/posts.js'
 import loginRoutes from './routes/loginRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
@@ -26,14 +36,15 @@ const server = http.createServer(app)    //setting server
 
 const io = new Server(server, {     //linking socket.io to server
     cors: {
-        origin: ["https://localhost:3000","https://aaazzz.xyz"] //cors 
+        origin: ["https://localhost:3000","https://aaazzz.xyz"],
+        methods: ["GET", "POST"],
     }, 
 })
 
-const CONNECTION_URL = "mongodb+srv://vassardog:rIJOlh3RtOatodIx@cluster0.kl3sctu.mongodb.net/?retryWrites=true&w=majority"   //setting connection url
+const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
 const PORT = process.env.PORT|| 5000; //setting port
 
-io.on("connection", (socket) => {
+io.on("connection", (socket) => {//socket.io chat capability
     console.log(`User Connected: ${socket.id}`);
   
     socket.on("join_room", (data) => {
@@ -69,3 +80,4 @@ app.use('/profiles', profileRoutes)
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(()  => server.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
     .catch((error) => console.log(error.message));
+    

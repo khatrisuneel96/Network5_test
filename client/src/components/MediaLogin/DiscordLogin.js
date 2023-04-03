@@ -2,9 +2,9 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getDcLogin } from '../../actions/loginActions'
-import axios from 'axios'; 
 
 function DiscordLogin(props) {
+    const current_user = JSON.parse(localStorage.getItem('user'))
     const [searchParams] = useSearchParams()
     let access_code_pending = sessionStorage.getItem('disc_code_pending')
     const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
@@ -22,7 +22,11 @@ function DiscordLogin(props) {
                 let code = searchParams.get("code")
                 let redirect_uri = window.location.origin + "/social-add"
                 
-                let config = {"code":code,"redirect_uri":redirect_uri}
+                let config = {
+                    "code":code,
+                    "redirect_uri":redirect_uri,
+                    "user": current_user.email
+                }
                 dispatch(getDcLogin(config))
             }
 

@@ -24,6 +24,7 @@ const profileUrl = base_url+'/profiles/post'
 //creating the fetchPosts and createPost functions that are used in actions
 export const fetchPosts = () => axios.get(postUrl)
 export const createPost = (newPost) => axios.post(postUrl, newPost)
+export const deletePost = (id) => {axios.delete(`${postUrl}/${id}`)}
 
 export const getFbLogin = (config) => axios.post(FbLoginUrl, config)
 .then((response) => {
@@ -52,7 +53,7 @@ export const postCalendarEvent = (config) => axios.post(calendarUrl, config)
 
 export const getAnalytics = (config) => axios.get(analyticsUrl, config)
 .then((response) => {
-    console.log(response)
+    //console.log(response)
     return response
 })
 

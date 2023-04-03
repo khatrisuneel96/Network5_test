@@ -9,6 +9,7 @@ function FacebookLogin(props) {
 
     const [searchParams] = useSearchParams()
     let access_code_pending = sessionStorage.getItem('fb_code_pending')
+    const current_user = JSON.parse(localStorage.getItem('user'))
 
     let login = () => {  //using login redirect to get code
         let scopes =  [         //setting scopes (make sure that %2C is added between scopes)
@@ -32,7 +33,11 @@ function FacebookLogin(props) {
                 console.log(code)
                 let redirect_uri = window.location.origin + '/social-add'
                 
-                let config = {"code":code,"redirect_uri":redirect_uri}
+                let config = {
+                    "code":code,
+                    "redirect_uri":redirect_uri,
+                    "user": current_user.email
+                }
                 dispatch(getFbLogin(config))
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postCalendarEvent } from '../../actions/calendarActions'
 import { useSelector } from 'react-redux'
@@ -6,8 +6,10 @@ import axios from 'axios';
 import { base_url } from '../../api';
 
 function HomeFunctionality(props) {
-
+  const current_user = JSON.parse(localStorage.getItem('user'))
   const events = useSelector((state) => state.events)
+  let [CalendarData, setCalendarData] = useState()
+
 
 
   const dispatch = useDispatch()      //establishing dispatch function (necessary for some reason)
@@ -34,9 +36,11 @@ function HomeFunctionality(props) {
   let getEvents = async (e) => {
     axios.get(base_url+'/calendar/get')
     .then(response => {
-        console.log(response.data)})
-  }
+        console.log(response.data.items)
+        setCalendarData(response.data.items)
+    })
 
+  }
     return (
         <div>
           <form onSubmit={postEvent}>
@@ -49,7 +53,6 @@ function HomeFunctionality(props) {
             </div>
             <div><button type='submit'>Schedule Event</button></div>
           </form>
-          <button onClick={()=>console.log(events)}>test</button>
           <button onClick={getEvents}>Get calendar Events</button>
         </div>
     );
