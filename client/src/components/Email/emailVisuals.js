@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInbox,faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { base_url } from '../../api';
+import EmailFunctionality from './emailFunctionality';
 
 
 function Emailvisuals(props) {//email visuals
@@ -74,7 +75,8 @@ function Emailvisuals(props) {//email visuals
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
+            <EmailFunctionality></EmailFunctionality>            
         </div>
     );
 }

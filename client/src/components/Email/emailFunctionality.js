@@ -22,12 +22,6 @@ function EmailFunctionality(props) {
         alert("Email Sent!")
     }
 
-    let getEmails = async (e) => {
-        axios.get(base_url+'/email/list')
-        .then(response => {
-            console.log(response.data)})
-    }
-
     return (
         <div>
             <form onSubmit={sendEmail}>
@@ -36,7 +30,6 @@ function EmailFunctionality(props) {
             <div><textarea placeholder='body'></textarea></div>
             <div><button type='submit'>Send Email</button></div>
           </form>
-          <div><button onClick={getEmails}>Get Emails</button></div>
         </div>
     );
 }

@@ -13,8 +13,6 @@ export const getIgAnalytics = async (req, res) => { //webook endpoints
     let days_in_last_month = new Date(2023, (current_month-1), 0).getDate()
     let start_date = 1
 
-    console.log(end_date)
-
     if (days_in_last_month < end_date) { //making sure it doesn't ask for a start date greater than the days in last month
       start_date = days_in_last_month
       if (end_date === "31") { //making sure the period requested is not more than 30 days
@@ -24,10 +22,14 @@ export const getIgAnalytics = async (req, res) => { //webook endpoints
     } else if (end_date === "31") {
       start_month++
       start_date = '01'
-      
     } else {
       start_date = end_date
     }
+  
+  if (end_date !== "01") {
+    console.log("work please?")
+    end_date =  String(todays_date.getDate()-1).padStart(2, '0')
+  }
 
     var config = {
         method: 'get',
