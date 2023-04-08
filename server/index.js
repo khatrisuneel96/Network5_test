@@ -1,19 +1,10 @@
-
-
-
-
-
-
-
-
-
-
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import { Server } from 'socket.io'   //importing socket.io
 import http from 'http'
+import path from 'path'
 import * as dotenv from 'dotenv'
 dotenv.config()
 mongoose.set('strictQuery', true);
@@ -36,10 +27,30 @@ const server = http.createServer(app)    //setting server
 
 const io = new Server(server, {     //linking socket.io to server
     cors: {
-        origin: ["https://localhost:3000","https://aaazzz.xyz"],
+        origin: ["https://localhost:3000","https://aaazzz.xyz"], //if stuff doesn't work maybe set orgin *
         methods: ["GET", "POST"],
     }, 
 })
+
+//////////////////////ADDING IN WEIRD DEPLOYMENT CODE//////////////////////
+const _dirname = path.dirname("")
+const buildPath = path.join(_dirname  , "../client/build");
+
+app.use(express.static(buildPath))
+
+app.get("/*", function(req, res){
+
+    res.sendFile(
+        path.join(__dirname, "../client/build/index.html"),
+        function (err) {
+          if (err) {
+            res.status(500).send(err);
+          }
+        }
+      );
+
+})
+//////////////////////////////////////////////////////////////////////////
 
 const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
 const PORT = process.env.PORT|| 5000; //setting port
