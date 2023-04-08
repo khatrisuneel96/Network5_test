@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import CalendarComponent2 from './calendarComponent2';
 import HomeFunctionality from './homeFunctionality'
+import LoginList from '../MediaLogin/LoginList';
 
 function HomeVisuals(props) {
 

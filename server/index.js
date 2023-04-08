@@ -5,6 +5,7 @@ import cors from 'cors'
 import { Server } from 'socket.io'   //importing socket.io
 import http from 'http'
 import path from 'path'
+const __dirname = path.resolve();
 import * as dotenv from 'dotenv'
 dotenv.config()
 mongoose.set('strictQuery', true);
@@ -39,7 +40,7 @@ const buildPath = path.join(_dirname  , "../client/build");
 app.use(express.static(buildPath))
 
 app.get("/*", function(req, res){
-
+    console.log(__dirname)
     res.sendFile(
         path.join(__dirname, "../client/build/index.html"),
         function (err) {
