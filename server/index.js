@@ -54,7 +54,7 @@ app.get("/*", function(req, res){
 //////////////////////////////////////////////////////////////////////////
 
 const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
-const PORT = 5000; //setting port used to be process.env.PORT|| 5000
+const PORT = process.env.PORT|| 5000; //setting port used to be process.env.PORT|| 5000
 
 io.on("connection", (socket) => {//socket.io chat capability
     console.log(`User Connected: ${socket.id}`);
