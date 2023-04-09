@@ -44,6 +44,8 @@ export const useLogin = () => {
   
 */
 
+    console.log("url used for login call is "+base_url+'/api/user/login')
+
     const response = await fetch(base_url+'/api/user/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
