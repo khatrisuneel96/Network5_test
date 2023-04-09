@@ -8,8 +8,8 @@ if (window.location.origin.includes("localhost")) {
      baseurl = "https://172.31.21.180:5000" 
 }
 export const base_url = baseurl
-console.log("changes made")
-console.log(base_url)
+console.log("changes made url to private")
+console.log("base url being used is "+base_url)
 
 const postUrl = base_url+'/posts' //the specific routes that the client is accessing in the server
 const FbLoginUrl = base_url+'/login/fb'

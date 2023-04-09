@@ -50,6 +50,7 @@ export const useLogin = () => {
       body: JSON.stringify({ email, password })
     })
     const json = await response.json()
+    console.log("url used for login call was "+base_url+'/api/user/login')
 
     if (!response.ok) {
       console.log(json.error)
