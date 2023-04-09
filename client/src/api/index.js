@@ -6,7 +6,7 @@ console.log(baseurl)
 if (window.location.origin.includes("localhost")) {
     baseurl = "http://localhost:5000"
 } else {
-     baseurl = "http://172.31.21.180:5000"
+     baseurl = "http://172.31.15.195:5000"
 }
 export const base_url = baseurl
 console.log(base_url)
