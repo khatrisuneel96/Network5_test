@@ -28,7 +28,7 @@ const server = http.createServer(app)    //setting server
 
 const io = new Server(server, {     //linking socket.io to server
     cors: {
-        origin: ["*"], //if stuff doesn't work maybe set orgin * (used to be "https://localhost:3000","https://aaazzz.xyz")
+        origin: "*", //if stuff doesn't work maybe set orgin * (used to be "https://localhost:3000","https://aaazzz.xyz")
         methods: ["GET", "POST"],
     }, 
 })
