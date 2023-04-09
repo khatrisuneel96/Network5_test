@@ -13,8 +13,9 @@ function AnalyticsFunctionality(props) {
 
     useEffect(() => {           
         axios.get(base_url+'/analytics/ig')
+        console.log(base_url)
         .then(response => {
-            console.log(response.data.data)
+            console.log(response)
             let profile_views_data = response.data.data[0].values.map(value => value.value)
             let reach_data = response.data.data[1].values.map(value => value.value)
             let impressions_data = response.data.data[2].values.map(value => value.value)

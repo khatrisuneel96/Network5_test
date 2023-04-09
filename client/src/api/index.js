@@ -1,6 +1,7 @@
 import axios from "axios";
 
-var baseurl = "http://172.31.21.180:5000"
+var baseurl = "http://172.31.15.195:5000"
+console.log(baseurl)
 
 if (window.location.origin.includes("localhost")) {
     baseurl = "http://localhost:5000"
