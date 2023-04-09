@@ -34,7 +34,7 @@ const io = new Server(server, {     //linking socket.io to server
 })
 
 //////////////////////ADDING IN WEIRD DEPLOYMENT CODE//////////////////////
-const _dirname = path.dirname("")
+/*const _dirname = path.dirname("")
 const buildPath = path.join(_dirname  , "../client/build");
 
 app.use(express.static(buildPath))
@@ -50,7 +50,7 @@ app.get("/*", function(req, res){
         }
       );
 
-})
+})*/
 //////////////////////////////////////////////////////////////////////////
 
 const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
