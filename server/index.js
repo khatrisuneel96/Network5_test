@@ -70,6 +70,6 @@ app.use('/api/user', userRoutes)
 app.use('/profiles', profileRoutes)
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(()  => server.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
+    .then(()  => server.listen(5000, '0.0.0.0', () => console.log(`Server Running on Port: ${PORT}`))) //new changes
     .catch((error) => console.log(error.message));
     
