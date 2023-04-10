@@ -1,11 +1,11 @@
 import axios from "axios";
 
-var baseurl = "http://172.31.21.180/:5000"
+var baseurl = "http://172.31.23.235/:5000"
 
 if (window.location.origin.includes("localhost")) {
     baseurl = "http://localhost:5000"
 } else {
-     baseurl = "http://172.31.21.180:5000" 
+     baseurl = "http://172.31.23.235:5000" 
 }
 export const base_url = baseurl
 console.log("changes made url to private")
