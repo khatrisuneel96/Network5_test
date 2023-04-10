@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "babel-node ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +25,11 @@
     "socket.io": "^4.6.1",
     "undici": "^5.16.0",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.4"
   }
 }

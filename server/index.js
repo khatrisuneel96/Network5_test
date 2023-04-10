@@ -25,17 +25,17 @@ const app = express()
 
 const server = createServer(app);    //setting server
 
-/*const io = new Server(server, {     //linking socket.io to server
+const io = new Server(server, {     //linking socket.io to server
     cors: {
         origin: "*", //if stuff doesn't work maybe set orgin * (used to be "https://localhost:3000","https://aaazzz.xyz")
         methods: ["GET", "POST"],
     }, 
-})*/
+})
 
 const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
 const PORT = process.env.PORT|| 5000; //setting port used to be process.env.PORT|| 5000
 
-/*io.on("connection", (socket) => {//socket.io chat capability
+io.on("connection", (socket) => {//socket.io chat capability
     console.log(`User Connected: ${socket.id}`);
   
     socket.on("join_room", (data) => {
@@ -50,7 +50,7 @@ const PORT = process.env.PORT|| 5000; //setting port used to be process.env.PORT
     socket.on("disconnect", () => {
       console.log("User Disconnected", socket.id);
     });
-  });*/
+  });
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
