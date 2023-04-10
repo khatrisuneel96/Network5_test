@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import { Server } from 'socket.io'   //importing socket.io
 import http from 'http'
+import { createServer } from 'http';
 import * as dotenv from 'dotenv'
 dotenv.config()
 mongoose.set('strictQuery', true);
@@ -22,7 +23,7 @@ import profileRoutes from './routes/profileRoutes.js'
 
 const app = express()
 
-const server = http.createServer(app)    //setting server
+const server = createServer(app);    //setting server
 
 /*const io = new Server(server, {     //linking socket.io to server
     cors: {
