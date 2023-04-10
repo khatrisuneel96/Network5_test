@@ -1,72 +1,73 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const http = require('http');
-const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config();
+import express from 'express'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import { Server } from 'socket.io'   //importing socket.io
+import http from 'http'
+import * as dotenv from 'dotenv'
+dotenv.config()
 mongoose.set('strictQuery', true);
 
-const postRoutes2 = require('./routes/posts');
-const loginRoutes = require('./routes/loginRoutes');
-const messageRoutes = require('./routes/messageRoutes');
-const pageRoutes = require('./routes/pageRoutes');
-const emailRoutes = require('./routes/emailRoutes');
-const calendarRoutes = require('./routes/calendarRoutes');
-const webhookRoutes = require('./routes/webhookRoutes');
-const analyticsRoutes = require('./routes/analyticsRoutes');
-const postRoutes = require('./routes/postRoutes');
-const userRoutes = require('./routes/user');
-const profileRoutes = require('./routes/profileRoutes');
+import postRoutes2 from './routes/posts.js'
+import loginRoutes from './routes/loginRoutes.js'
+import messageRoutes from './routes/messageRoutes.js'
+import pageRoutes from './routes/pageRoutes.js'
+import emailRoutes from './routes/emailRoutes.js'
+import calendarRoutes from './routes/calendarRoutes.js'
+import webhookRoutes from './routes/webhookRoutes.js'
+import analyticsRoutes from './routes/analyticsRoutes.js'
+import postRoutes from './routes/postRoutes.js'
+import userRoutes from './routes/user.js'
+import profileRoutes from './routes/profileRoutes.js'
 
-const app = express();
-const server = http.createServer(app);
+const app = express()
 
-const io = require('socket.io')(server, {
-  cors: {
-    origin: "*", 
-    methods: ["GET", "POST"],
-  }, 
-});
+const server = http.createServer(app)    //setting server
 
-const CONNECTION_URL = process.env.CONNECTION_URL;
-const PORT = process.env.PORT || 5000;
+/*const io = new Server(server, {     //linking socket.io to server
+    cors: {
+        origin: "*", //if stuff doesn't work maybe set orgin * (used to be "https://localhost:3000","https://aaazzz.xyz")
+        methods: ["GET", "POST"],
+    }, 
+})*/
 
-io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+const CONNECTION_URL = process.env.CONNECTION_URL   //setting connection url
+const PORT = process.env.PORT|| 5000; //setting port used to be process.env.PORT|| 5000
 
-  socket.on("join_room", (data) => {
-    socket.join(data);
-    console.log(`User with ID: ${socket.id} joined room: ${data}`);
-  });
+/*io.on("connection", (socket) => {//socket.io chat capability
+    console.log(`User Connected: ${socket.id}`);
+  
+    socket.on("join_room", (data) => {
+      socket.join(data);
+      console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    });
+  
+    socket.on("send_message", (data) => {
+      socket.to(data.room).emit("receive_message", data);
+    });
+  
+    socket.on("disconnect", () => {
+      console.log("User Disconnected", socket.id);
+    });
+  });*/
 
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("User Disconnected", socket.id);
-  });
-});
-
-app.use(bodyParser.json({ limit: '30mb', extended: true }));
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
-app.use('/posts', postRoutes2);
-app.use('/login', loginRoutes);
-app.use('/messages', messageRoutes);
-app.use('/pages', pageRoutes);
-app.use('/email', emailRoutes);
-app.use('/calendar', calendarRoutes);
-app.post('/webhook', webhookRoutes);
-app.use('/analytics', analyticsRoutes);
-app.use('/post', postRoutes);
-app.use('/api/user', userRoutes);
-app.use('/profiles', profileRoutes);
+app.use('/posts', postRoutes2)
+app.use('/login', loginRoutes)
+app.use('/messages', messageRoutes)
+app.use('/pages', pageRoutes)
+app.use('/email', emailRoutes)
+app.use('/calendar', calendarRoutes)
+app.post('/webhook', webhookRoutes)
+app.use('/analytics', analyticsRoutes)
+app.use('/post', postRoutes)
+app.use('/api/user', userRoutes)
+app.use('/profiles', profileRoutes)
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(()  => server.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
     .catch((error) => console.log(error.message));
+    
