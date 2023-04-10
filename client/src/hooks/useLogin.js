@@ -48,7 +48,12 @@ export const useLogin = () => {
 
     const response = await fetch(base_url+'/api/user/login', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    },
       body: JSON.stringify({ email, password })
     })
     const json = await response.json()
