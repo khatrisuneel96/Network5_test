@@ -9,11 +9,11 @@ import EmailFunctionality from './emailFunctionality';
 function Emailvisuals(props) {//email visuals
 
     const emails = [
-        { name: 'Tejaswi', date: '4/10/23', subject: 'Re: AME 220', message:'Thank you for the quick response! I am only available between 10am and noon tomorrow,'},
-        { name: 'LinkedIn', date: '4/10/23', subject: 'Gary S. May recently posted', message:'Great chat this morning with VC Pablo Regueren'},
-        { name: 'Google', date: '4/10/23', subject: 'Security Alert', message:'Networktest1 was granted access to your Google Account'},
-        { name: 'Commence', date: '4/10/23', subject: 'Register to Participate in ', message:'Dear Graduate,Congratulations on the completion of your degree!'},
-        { name: 'me', date: '4/10/23', subject: 'popups', message:'One attachment  •  Scanned by Gmail'},
+        { name: 'Tejaswi', date: '4/11/23', subject: 'Re: AME 220', message:'Thank you for the quick response! I am only available between 10am and noon tomorrow,'},
+        { name: 'LinkedIn', date: '4/11/23', subject: 'Gary S. May recently posted', message:'Great chat this morning with VC Pablo Regueren'},
+        { name: 'Google', date: '4/11/23', subject: 'Security Alert', message:'Networktest1 was granted access to your Google Account'},
+        { name: 'Commence', date: '4/11/23', subject: 'Register to Participate in ', message:'Dear Graduate,Congratulations on the completion of your degree!'},
+        { name: 'me', date: '4/11/23', subject: 'popups', message:'One attachment  •  Scanned by Gmail'},
     ]
 
     useEffect(() => { 
