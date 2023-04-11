@@ -9,7 +9,7 @@ if (window.location.origin.includes("localhost")) {
      baseurl = "http://172.31.23.235:5000" //port changed to 80
 }
 export const base_url = baseurl
-console.log("changes made url to private")
+console.log("updated email stuff")
 console.log("base url being used is "+base_url)
 
 const postUrl = base_url+'/posts' //the specific routes that the client is accessing in the server
