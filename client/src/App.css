@@ -732,6 +732,142 @@ margin-left: 1.5rem;
   padding-left: 0.5rem;
 }
 
+#popup {
+  display: none;
+  position: absolute;
+  margin-top: -52rem;
+  margin-left: 50rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 1rem 2em rgba(0, 0, 0, 0.1);
+  outline-style: solid;
+  outline-color: #dbdbdb;
+}
 
+#popup textarea {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  resize: none;
+}
 
+#popup input {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0.5rem;
+}
 
+#popup2 {
+  display: none;
+  position: absolute;
+  margin-top: -52rem;
+  margin-left: 15rem;
+  width: 10rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 1rem 2em rgba(0, 0, 0, 0.1);
+  outline-style: solid;
+  outline-color: #dbdbdb;
+}
+
+#popup2 textarea {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  resize: none;
+}
+
+#popup3 {
+  display: none;
+  position: absolute;
+  margin-top: 5rem;
+  margin-left: -2rem;
+  width: 10rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 1rem 2em rgba(0, 0, 0, 0.1);
+  outline-style: solid;
+  outline-color: #dbdbdb;
+}
+
+#popup3 textarea {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  width: 10rem;
+  resize: none;
+}
+
+#popup3 input {
+  outline-style: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+#popup4 {
+  display: none;
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 0rem;
+  width: 20rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 1rem 2em rgba(0, 0, 0, 0.1);
+  outline-style: solid;
+  outline-color: #dbdbdb;
+}
+
+#popup4 textarea {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  width: 10rem;
+  resize: none;
+}
+
+#popup4 input {
+  outline-style: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.profile_edit {
+  margin-top: 2rem;
+  width: 20rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2em rgba(0, 0, 0, 0.1);
+  outline-style: solid;
+  outline-color: #dbdbdb;
+}
+
+.profile_edit textarea {
+  outline-style: none;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  width: 18rem;
+  resize: none;
+}
+
+.profile_edit input {
+  outline-style: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0.5rem;
+}

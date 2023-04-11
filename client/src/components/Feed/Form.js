@@ -12,8 +12,8 @@ function Form(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         dispatch(createPost(postData))
+        alert("Profile Updated!")
     }
 
     const clear = () => {

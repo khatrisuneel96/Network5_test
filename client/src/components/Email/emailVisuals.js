@@ -22,12 +22,22 @@ function Emailvisuals(props) {//email visuals
             console.log(response.data)})
         }, [])
 
+        function display2() {
+            var x = document.getElementById("popup3");
+            if (x.style.display === "block") {
+              x.style.display = "none";
+            } else {
+              x.style.display = "block";
+            }
+          }
+
 
 // Email Front End  
     return (
         <div>
             <div className = 'component_parent'>
                 <div className = 'component_header'>Email <FontAwesomeIcon icon={faEnvelope}/></div>
+                <button onClick={display2}>+ Create Post</button>
                 <div className = 'email_box'>
                     <div className = 'email_box_top'>
                         <div className = 'email_box_top_text'>All</div>
@@ -76,7 +86,7 @@ function Emailvisuals(props) {//email visuals
                     </div>
                 </div>
             </div>
-            <EmailFunctionality></EmailFunctionality>            
+            <div id='popup3'><EmailFunctionality></EmailFunctionality></div>            
         </div>
     );
 }

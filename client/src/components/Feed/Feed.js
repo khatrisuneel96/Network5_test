@@ -16,12 +16,22 @@ function Feed() {
         dispatch(getPosts())
     }, [dispatch])
 
+    function display2() {
+        var x = document.getElementById("popup4");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+      }
+
 
     return (
         <div>
             <div className='component_parent'>
                 <div className = 'component_header'>Feed <FontAwesomeIcon icon={faListUl}/></div>
-                <Form></Form>
+                <button onClick={display2}>+ Create Post</button>
+                <div id='popup4'><Form></Form></div>
                 <Posts></Posts>
             </div>
         </div>

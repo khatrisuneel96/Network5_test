@@ -24,19 +24,21 @@ function ProfileEdit(props) {
             "description":e.target[5].value,
             "img4":Img4
         })
+        console.log("it should be alerting?")
+        alert("Profile Updated!")
         dispatch(postProfile(profile))
     }
 
     return (
-        <div>
+        <div className='profile_edit'>
             <form onSubmit={postEvent}>
                 <div>Add image(s):<FileBase type='file' multiple={false} onDone={({base64}) =>setImg1(base64)}></FileBase></div>
                 <div><textarea placeholder='Organization Name'></textarea></div>
                 <div>Add image(s):<FileBase type='file' multiple={false} onDone={({base64}) =>setImg2(base64)}></FileBase></div>
                 <div>Where to Contact Us</div>
-                <div><textarea placeholder='contact information'></textarea></div>
+                <div><textarea placeholder='Contact information'></textarea></div>
                 <div>Add image(s):<FileBase type='file' multiple={false} onDone={({base64}) =>setImg3(base64)}></FileBase></div>
-                <div><textarea placeholder='description'></textarea></div>
+                <div><textarea placeholder='Description'></textarea></div>
                 <div>Add image(s):<FileBase type='file' multiple={false} onDone={({base64}) =>setImg4(base64)}></FileBase></div>
                 <div><button type='submit'>Save Profile</button></div>
             </form>

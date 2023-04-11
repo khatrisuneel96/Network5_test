@@ -53,7 +53,6 @@ function HomeFunctionality(props) {
             </div>
             <div><button type='submit'>Schedule Event</button></div>
           </form>
-          <button onClick={getEvents}>Get calendar Events</button>
         </div>
     );
 }
