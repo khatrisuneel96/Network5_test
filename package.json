@@ -1,0 +1,30 @@
+{
+  "name": "network5_test",
+  "version": "1.0.0",
+  "description": "Backups of previous versions can be found in the backup branch",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm install ./server && npm install ./client",
+    "build": "npm run build --prefix ./client",
+    "start:client": "serve -s ./client/build",
+    "start:server": "npm start --prefix ./server",
+    "start": "npx concurrently --kill-others --names \"server,client\" \"npm run start:server\" \"npm run start:client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vassardog77/Network5_test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vassardog77/Network5_test/issues"
+  },
+  "homepage": "https://github.com/Vassardog77/Network5_test#readme",
+  "dependencies": {
+    "client": "file:client",
+    "concurrently": "^8.0.1",
+    "serve": "^14.2.0",
+    "server": "file:server"
+  }
+}

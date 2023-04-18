@@ -13,11 +13,11 @@ function EmailFunctionality(props) {
     let sendEmail = async (e) => {       //sending email to the server (function comming from actions folder)
         e.preventDefault()
         let data = Buffer.from(
-            'Subject: '+e.target[1].value+'\n'+   //setting subject
-            'To: '+e.target[0].value+'\n\n'+     //setting recipient
+            'Subject: ' + e.target[1].value + '\n' +   //setting subject
+            'To: ' + e.target[0].value + '\n\n' +     //setting recipient
             e.target[2].value                   //setting body text
-            ).toString('base64')
-        let email = {"raw":data}
+        ).toString('base64')
+        let email = { "raw": data }
         dispatch(postEmail(email))
         alert("Email Sent!")
     }
@@ -25,11 +25,11 @@ function EmailFunctionality(props) {
     return (
         <div>
             <form onSubmit={sendEmail}>
-            <div><input type='email' placeholder='To:' required></input></div>
-            <div><input type='text' placeholder='subject'></input></div>
-            <div><textarea placeholder='body'></textarea></div>
-            <div><button type='submit'>Send Email</button></div>
-          </form>
+                <div><input type='email' placeholder='To:' required></input></div>
+                <div><input type='text' placeholder='subject'></input></div>
+                <div><textarea placeholder='body'></textarea></div>
+                <div><button type='submit'>Send Email</button></div>
+            </form>
         </div>
     );
 }
